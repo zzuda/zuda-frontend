@@ -1,56 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import RedButton from '../../atomic/buttons/RedButton';
+import ButtonGroup from '../ButtonGroup';
+import { Google, FaceBook, Kakao, Naver } from '../Socials';
+import LoginForm from './LoginForm';
 
 const Container = styled.div`
   width: 600px;
   height: 100%;
-  padding-top: 23rem;
-  padding-left: 30rem;
+  padding-top: 24rem;
+  padding-left: 20rem;
   display: flex;
   flex-direction: column;
-`;
-
-const Label = styled.label`
-  display: block;
-  color: #5d5d5d;
-  font-weight: bold;
-  font-size: 32px;
-  margin-bottom: 0.5rem;
-`;
-
-const Input = styled.input`
-  width: 523px;
-  height: 77px;
-  border: none;
-  font-family: 'NanumSquare', sans-serif;
-  font-size: 28px;
-  font-weight: lighter;
-  color: #a0a0a0;
-  padding: 1rem 3rem;
-  margin-bottom: 1.8rem;
-  border-radius: 139px;
-  background: #e7e7e7;
-  box-shadow: 22px 22px 44px #c4c4c4, -22px -22px 44px #ffffff;
+  position: absolute;
+  z-index: 10;
 `;
 
 const LoginGroups = styled.div`
   display: flex;
+  min-width: 600px;
+  align-items: center;
+
+  & > *:first-child {
+    margin-right: 2rem;
+  }
 `;
 
 const Login = () => {
+  const initialLoginState = {
+    text: '로그인',
+    fSize: 28,
+  };
+
+  const [loginBtnState, setLoginBtnState] = useState(initialLoginState);
+  const [input, setInput] = useState({
+    id: '',
+    password: '',
+  });
+
+  const onChange = (e, id) => {
+    setInput((prevState) => ({
+      ...prevState,
+      [id]: e.target.value,
+    }));
+  };
+
+  const onMouseOver = () => {
+    setLoginBtnState({
+      text: '➜',
+      fSize: 42,
+    });
+  };
+
+  const onMouseLeave = () => setLoginBtnState(initialLoginState);
+
+  const { text, fSize } = loginBtnState;
+
   return (
     <Container>
-      <Label>아이디</Label>
-      <Input placeholder="ID" />
-
-      <Label>비밀번호</Label>
-      <Input placeholder="PASSWORD" />
-
+      <LoginForm input={input} onChange={onChange} />
       <LoginGroups>
-        <RedButton width={156} height={70} radius={30} fSize={28}>
-          로그인
+        <RedButton
+          width={156}
+          height={70}
+          radius={30}
+          fSize={fSize}
+          isShadow
+          onMouseOver={onMouseOver}
+          onMouseLeave={onMouseLeave}
+        >
+          {text}
         </RedButton>
+        <ButtonGroup>
+          <Google />
+          <FaceBook />
+          <Kakao />
+          <Naver />
+        </ButtonGroup>
       </LoginGroups>
     </Container>
   );
