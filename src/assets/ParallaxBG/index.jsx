@@ -13,8 +13,8 @@ const Container = styled.div`
 
 const Image = styled.img`
   position: absolute;
-  transform: scale(0.95);
-  top: -10px;
+  transform: scale(0.97);
+  top: -40px;
   left: -100px;
 `;
 
