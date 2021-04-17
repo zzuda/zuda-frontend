@@ -48,7 +48,6 @@ const InputDiv = styled.div`
 const Main = () => {
   return (
     <Container>
-        {/* <Label>너에게 주다</Label> */}
         <TextLoop interval={3000}>
               <LoopText>파일을</LoopText>
               <LoopText>화면을</LoopText>
