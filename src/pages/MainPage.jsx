@@ -16,6 +16,7 @@ const Logo = styled.img`
   width: 338px;
 `;
 
+
 const SwitchingComponent = () => {
   const [page, setPage] = useState('main');
 
