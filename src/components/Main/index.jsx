@@ -39,7 +39,7 @@ const InputDiv = styled.div`
     margin-top: 1.5rem;
     display: flex;
 
-        transition: transform 0.3s;
+        transition: all 0.3s;
     &:hover {
         transform: translateX(-2px);
     }
