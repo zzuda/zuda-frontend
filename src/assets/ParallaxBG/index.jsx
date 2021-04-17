@@ -13,8 +13,9 @@ const Container = styled.div`
 
 const Image = styled.img`
   position: absolute;
-  top: 0;
-  left: 0;
+  transform: scale(0.97);
+  top: -40px;
+  left: -100px;
 `;
 
 const ParallaxBG = ({ children }) => {
