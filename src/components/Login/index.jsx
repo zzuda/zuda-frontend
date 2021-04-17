@@ -65,6 +65,7 @@ const Login = () => {
           height={70}
           radius={30}
           fSize={fSize}
+          moveX={1}
           isShadow
           onMouseOver={onMouseOver}
           onMouseLeave={onMouseLeave}
