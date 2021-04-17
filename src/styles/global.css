@@ -3,6 +3,7 @@
 body {
   font-family: 'Noto Sans KR', 'NanumSquare', sans-serif;
   background-color: #f6f3f0;
+  overflow-x: hidden;
 }
 
 * {
