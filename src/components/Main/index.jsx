@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import InputCodeForm from '../Main/InputCodeForm';
 import RedButton from '../../atomic/buttons/RedButton';
 
+import TextLoop from "react-text-loop";
+
 const Container = styled.div`
   position: absolute;
 
@@ -13,14 +15,23 @@ const Container = styled.div`
   padding-left: 20rem;
 `;
 
-const Label = styled.label`
+const LoopText = styled.label`
     font-size: 46px;
     font-weight: 700;
 
     padding-left: 1rem;
 
-    color: #505050;
+    color: #5f5f5f;
 `;
+const LoopText2 = styled.label`
+    font-size: 46px;
+    font-weight: 700;
+
+    padding-left: 1rem;
+    
+    color: #ff5757;
+`;
+
 
 const InputDiv = styled.div`
     width: 700px;
@@ -30,14 +41,21 @@ const InputDiv = styled.div`
 
         transition: transform 0.3s;
     &:hover {
-        transform: translateY(-3px);
+        transform: translateX(-2px);
     }
 `;
 
 const Main = () => {
   return (
     <Container>
-        <Label>너에게 주다</Label>
+        {/* <Label>너에게 주다</Label> */}
+        <TextLoop interval={3000}>
+              <LoopText>파일을</LoopText>
+              <LoopText>화면을</LoopText>
+              <LoopText>그룹을</LoopText>
+              <LoopText>출석체크를</LoopText>
+        </TextLoop>
+        <LoopText2>주다</LoopText2>
         <InputDiv>
             <InputCodeForm />
             <RedButton
