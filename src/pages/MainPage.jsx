@@ -17,13 +17,13 @@ const Logo = styled.img`
 `;
 
 const SwitchingComponent = () => {
-  const [page, setPage] = useState('login');
+  const [page, setPage] = useState('main');
 
   if (!page) {
     return <div>로딩중..</div>;
   }
   if (page === 'main') {
-    return;
+    return <Main />;
   }
   if (page === 'login') {
     return <Login />;
