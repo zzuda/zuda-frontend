@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const RedButton = styled.button`
   width: ${(props) => props.width + 'px'};
@@ -17,9 +17,19 @@ const RedButton = styled.button`
   outline: none;
   transition: transform 0.3s;
 
-  &:hover {
-    transform: translateX(10px);
-  }
+  ${(props) =>
+    props.moveX &&
+    css`
+      transform: translateX(${(props) => props.moveX + 'px'});
+      
+      &:hover {
+      transform: translateX(${(props) => props.moveX + 10 + 'px'});
+      background-color: #ff4343;
+      }
+    `}
+  
+
+  
 `;
 
 export default RedButton;
