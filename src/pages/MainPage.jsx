@@ -2,7 +2,9 @@ import React from 'react';
 import ParallaxBG from '../assets/ParallaxBG';
 
 const MainPage = () => {
-  return <ParallaxBG></ParallaxBG>;
+  return <ParallaxBG>
+    
+  </ParallaxBG>;
 };
 
 export default MainPage;
