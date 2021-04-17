@@ -8,7 +8,6 @@ import bgImage3 from './Main_Page_Depth-3_resize.png';
 const Container = styled.div`
   width: 1920px;
   height: 1040px;
-  position: relative;
 `;
 
 const Image = styled.img`
@@ -16,6 +15,8 @@ const Image = styled.img`
   transform: scale(0.97);
   top: -40px;
   left: -100px;
+  pointer-events: none;
+  user-select: none;
 `;
 
 const ParallaxBG = ({ children }) => {
