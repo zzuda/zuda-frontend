@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 const RedButton = styled.button`
-  width: ${(props) => props.width + 'px'};
-  height: ${(props) => props.height + 'px'};
+  width: ${(props) => (props.width ? props.width : 156)}px;
+  height: ${(props) => (props.height ? props.height : 70)}px;
   background-color: #ff5f5f;
   color: #e3e3e3;
   border: none;
