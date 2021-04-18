@@ -27,7 +27,7 @@ const ParallaxBG = ({ children }) => {
 
   return (
     <Container id="scene">
-      <div data-depth="0.25">
+      <div data-depth="0.24">
         <Image src={bgImage3} alt="1" />
       </div>
       <div data-depth="0.18">
