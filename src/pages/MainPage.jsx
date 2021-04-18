@@ -3,6 +3,7 @@ import ParallaxBG from '../assets/ParallaxBG';
 import styled from 'styled-components';
 import Main from '../components/Main';
 import Login from '../components/Login';
+import Register from '../components/Register';
 import logo from '../assets/LOGO.png';
 
 const Container = styled.div`
@@ -29,7 +30,7 @@ const SwitchingComponent = () => {
     return <Login />;
   }
   if (page === 'register') {
-    return;
+    return <Register />;
   }
 };
 
