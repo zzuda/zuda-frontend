@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ParallaxBG from '../assets/ParallaxBG';
 import styled from 'styled-components';
+import Main from '../components/Main';
 import Login from '../components/Login';
 import logo from '../assets/LOGO.png';
 
@@ -15,14 +16,15 @@ const Logo = styled.img`
   width: 338px;
 `;
 
+
 const SwitchingComponent = () => {
-  const [page, setPage] = useState('login');
+  const [page, setPage] = useState('main');
 
   if (!page) {
     return <div>로딩중..</div>;
   }
   if (page === 'main') {
-    return;
+    return <Main />;
   }
   if (page === 'login') {
     return <Login />;

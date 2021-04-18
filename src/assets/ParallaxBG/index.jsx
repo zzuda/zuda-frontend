@@ -14,7 +14,7 @@ const Image = styled.img`
   position: absolute;
   transform: scale(0.97);
   top: -40px;
-  left: -100px;
+  left: -90px;
   pointer-events: none;
   user-select: none;
 `;
@@ -27,13 +27,13 @@ const ParallaxBG = ({ children }) => {
 
   return (
     <Container id="scene">
-      <div data-depth="0.6">
+      <div data-depth="0.25">
         <Image src={bgImage3} alt="1" />
       </div>
-      <div data-depth="0.4">
+      <div data-depth="0.18">
         <Image src={bgImage2} alt="2" />
       </div>
-      <div data-depth="0.2">
+      <div data-depth="0.1">
         <Image src={bgImage1} alt="3" />
       </div>
       {children}
