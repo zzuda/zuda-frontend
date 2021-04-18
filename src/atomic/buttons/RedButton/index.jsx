@@ -21,15 +21,12 @@ const RedButton = styled.button`
     props.moveX &&
     css`
       transform: translateX(${(props) => props.moveX + 'px'});
-      
+
       &:hover {
-      transform: translateX(${(props) => props.moveX + 10 + 'px'});
-      background-color: #ff4343;
+        transform: translateX(${(props) => props.moveX + 10 + 'px'});
+        background-color: #ff4343;
       }
     `}
-  
-
-  
 `;
 
 export default RedButton;
