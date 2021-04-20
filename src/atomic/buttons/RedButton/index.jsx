@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 const RedButton = styled.button`
-  width: ${(props) => props.width + 'px'};
-  height: ${(props) => props.height + 'px'};
+  width: ${(props) => (props.width ? props.width : 156)}px;
+  height: ${(props) => (props.height ? props.height : 70)}px;
   background-color: #ff5f5f;
   color: #e3e3e3;
   border: none;
@@ -21,15 +21,12 @@ const RedButton = styled.button`
     props.moveX &&
     css`
       transform: translateX(${(props) => props.moveX + 'px'});
-      
+
       &:hover {
-      transform: translateX(${(props) => props.moveX + 10 + 'px'});
-      background-color: #ff4343;
+        transform: translateX(${(props) => props.moveX + 10 + 'px'});
+        background-color: #ff4343;
       }
     `}
-  
-
-  
 `;
 
 export default RedButton;
