@@ -40,11 +40,11 @@ const Register = () => {
       password.trim() === '' ||
       passwordC.trim() === ''
     ) {
-      console.log('공백오류');
+      alert('공백이 있어요!');
       return;
     }
     if (password !== passwordC) {
-      console.log('패스워드 불일치');
+      alert('비밀번호가 일치하지 않아요!');
       return;
     }
 
@@ -60,7 +60,7 @@ const Register = () => {
     }
 
     setInputs(initialState);
-    alert('회원가입이 완료되었습니다!');
+    alert('회원가입이 완료되었어요!');
   };
 
   return (
