@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import RegisterForm from './RegisterForm';
+import axios from 'axios';
 
 const Container = styled.div`
   width: 600px;
@@ -14,12 +15,14 @@ const Container = styled.div`
 `;
 
 const Register = () => {
-  const [inputs, setInputs] = useState({
+  const initialState = {
     name: '',
     email: '',
     password: '',
     passwordC: '',
-  });
+  };
+
+  const [inputs, setInputs] = useState(initialState);
 
   const onChange = (e, id) => {
     setInputs((prevState) => ({
@@ -28,7 +31,7 @@ const Register = () => {
     }));
   };
 
-  const onClick = (e) => {
+  const onClick = async (e) => {
     e.preventDefault();
     const { name, email, password, passwordC } = inputs;
     if (
@@ -44,6 +47,20 @@ const Register = () => {
       console.log('패스워드 불일치');
       return;
     }
+
+    try {
+      await axios.post('http://localhost:8080/auth/register', {
+        name,
+        email,
+        password,
+      });
+    } catch (err) {
+      console.log(err);
+      return;
+    }
+
+    setInputs(initialState);
+    alert('회원가입이 완료되었습니다!');
   };
 
   return (
