@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import RegisterForm from './RegisterForm';
-import axios from 'axios';
+import Api from '../../Api';
 
 const Container = styled.div`
   width: 600px;
@@ -49,7 +49,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post('http://localhost:8080/auth/register', {
+      await Api.post('/auth/register', {
         name,
         email,
         password,
