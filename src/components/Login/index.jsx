@@ -4,6 +4,7 @@ import RedButton from '../../atomic/buttons/RedButton';
 import ButtonGroup from '../ButtonGroup';
 import { Google, FaceBook, Kakao, Naver } from '../Socials';
 import LoginForm from './LoginForm';
+import Api from '../../Api';
 
 const Container = styled.div`
   width: 600px;
@@ -52,6 +53,34 @@ const Login = () => {
     });
   };
 
+  const onClickLogin = async () => {
+    const { email, password } = input;
+
+    if ((email.trim() === '') | (password.trim() === '')) {
+      alert('공백이 있어요!');
+      return;
+    }
+
+    try {
+      const res = await Api.post('/auth/login', {
+        email,
+        password,
+      });
+      const token = res.data.data.token;
+      console.log(token);
+    } catch (err) {
+      if (!err.response.data) {
+        return;
+      }
+
+      if (err.response.data.code === 'auth-404') {
+        const { message } = err.response.data;
+        alert(message);
+        setInput((prevState) => ({ ...prevState, password: '' }));
+      }
+    }
+  };
+
   const onMouseLeave = () => setLoginBtnState(initialLoginState);
 
   const { text, fSize } = loginBtnState;
@@ -69,6 +98,7 @@ const Login = () => {
           isShadow
           onMouseOver={onMouseOver}
           onMouseLeave={onMouseLeave}
+          onClick={onClickLogin}
         >
           {text}
         </RedButton>
