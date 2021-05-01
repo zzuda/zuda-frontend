@@ -40,18 +40,18 @@ const Input = styled.input`
 const LoginForm = ({ input, onChange }) => {
   return (
     <div>
-      <Label>아이디</Label>
+      <Label>이메일</Label>
       <Input
-        type="text"
-        placeholder="ID"
+        type="email"
+        placeholder="이메일을 입력해주세요"
         value={input.id}
-        onChange={(e) => onChange(e, 'id')}
+        onChange={(e) => onChange(e, 'email')}
       />
 
       <Label>비밀번호</Label>
       <Input
         type="password"
-        placeholder="PASSWORD"
+        placeholder="비밀번호를 입력해주세요"
         value={input.password}
         onChange={(e) => onChange(e, 'password')}
       />

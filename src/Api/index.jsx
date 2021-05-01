@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getToken } from './tokenManage';
 
 const URL = 'http://localhost:8080';
 
@@ -7,7 +8,7 @@ const Api = axios.create({
   withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: '',
+    Authorization: `Bearer ${getToken() || ''}`,
   },
 });
 
