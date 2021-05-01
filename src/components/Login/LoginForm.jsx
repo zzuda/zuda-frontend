@@ -40,12 +40,12 @@ const Input = styled.input`
 const LoginForm = ({ input, onChange }) => {
   return (
     <div>
-      <Label>아이디</Label>
+      <Label>이메일</Label>
       <Input
-        type="text"
         placeholder="ID"
+        type="email"
         value={input.id}
-        onChange={(e) => onChange(e, 'id')}
+        onChange={(e) => onChange(e, 'email')}
       />
 
       <Label>비밀번호</Label>

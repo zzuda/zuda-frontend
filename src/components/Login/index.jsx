@@ -34,7 +34,7 @@ const Login = () => {
 
   const [loginBtnState, setLoginBtnState] = useState(initialLoginState);
   const [input, setInput] = useState({
-    id: '',
+    email: '',
     password: '',
   });
 
