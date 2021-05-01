@@ -5,7 +5,6 @@ import Main from '../components/Main';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import logo from '../assets/LOGO.png';
-import { removeToken } from '../Api/tokenManage';
 
 const Container = styled.div`
   position: relative;
