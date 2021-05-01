@@ -5,6 +5,7 @@ import Main from '../components/Main';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import logo from '../assets/LOGO.png';
+import { removeToken } from '../Api/tokenManage';
 
 const Container = styled.div`
   position: relative;
@@ -17,9 +18,7 @@ const Logo = styled.img`
   width: 338px;
 `;
 
-const SwitchingComponent = () => {
-  const [page, setPage] = useState('main');
-
+const SwitchingComponent = ({ page }) => {
   if (!page) {
     return <div>로딩중..</div>;
   }
@@ -35,10 +34,12 @@ const SwitchingComponent = () => {
 };
 
 const MainPage = () => {
+  const [page, setPage] = useState('main');
+
   return (
     <Container>
       <Logo src={logo} alt="zuda_logo" />
-      <SwitchingComponent />
+      <SwitchingComponent page={page} />
       <ParallaxBG />
     </Container>
   );
