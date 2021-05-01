@@ -42,8 +42,8 @@ const LoginForm = ({ input, onChange }) => {
     <div>
       <Label>이메일</Label>
       <Input
-        placeholder="ID"
         type="email"
+        placeholder="이메일을 입력해주세요"
         value={input.id}
         onChange={(e) => onChange(e, 'email')}
       />
@@ -51,7 +51,7 @@ const LoginForm = ({ input, onChange }) => {
       <Label>비밀번호</Label>
       <Input
         type="password"
-        placeholder="PASSWORD"
+        placeholder="비밀번호를 입력해주세요"
         value={input.password}
         onChange={(e) => onChange(e, 'password')}
       />
