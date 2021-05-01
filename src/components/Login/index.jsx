@@ -5,6 +5,7 @@ import ButtonGroup from '../ButtonGroup';
 import { Google, FaceBook, Kakao, Naver } from '../Socials';
 import LoginForm from './LoginForm';
 import Api from '../../Api';
+import { setToken } from '../../Api/tokenManage';
 
 const Container = styled.div`
   width: 600px;
@@ -66,8 +67,10 @@ const Login = () => {
         email,
         password,
       });
-      const token = res.data.data.token;
-      console.log(token);
+      const { token } = res.data.data;
+      setToken(token);
+
+      window.location.reload();
     } catch (err) {
       if (!err.response.data) {
         return;
