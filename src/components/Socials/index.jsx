@@ -14,7 +14,7 @@ export const Kakao = () => <SocialButton img={KakaoI} alt="Kakaotalk" />;
 
 export const Naver = () => <SocialButton img={NaverI} alt="Naver" />;
 
-export const SocialGroup = () => {
+export const SocialGroup = () => {  
   return (
     <ButtonGroup>
       <Google />
