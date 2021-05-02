@@ -26,9 +26,26 @@ const SocialButtonContainer = styled.button`
   }
 `;
 
-const SocialButton = ({ img, alt, onClick }) => {
+
+const SocialButton = ({ img, alt }) => {  
+  
+  const onClickSocial = () => {
+    if(alt === "Google"){
+      console.log("Google");
+    }
+    if(alt === "Facebook"){
+      console.log("Facebook");
+    }
+    if(alt === "Kakaotalk"){
+      console.log("Kakaotalk");
+    }
+    if(alt === "Naver"){
+      console.log("Naver");
+    }   
+  }
+  
   return (
-    <SocialButtonContainer onClick={onClick}>
+    <SocialButtonContainer onClick={onClickSocial}>
       <img src={img} alt={alt} />
     </SocialButtonContainer>
   );
