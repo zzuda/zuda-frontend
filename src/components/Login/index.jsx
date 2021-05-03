@@ -71,6 +71,7 @@ const Login = () => {
       setToken(token);
 
       window.location.reload();
+      console.log("로그인 완료 / 토큰이 저장됨");
     } catch (err) {
       if (!err.response.data) {
         return;
