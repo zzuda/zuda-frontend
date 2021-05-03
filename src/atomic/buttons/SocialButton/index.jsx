@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import Api from '../../../Api';
+import styled from 'styled-components';
+import axios from 'axios';
 
 const SocialButtonContainer = styled.button`
   width: 52px;
@@ -28,34 +29,24 @@ const SocialButtonContainer = styled.button`
 `;
 
 
-const SocialButton = ({ img, alt }) => {  
+const SocialButton = ({ img, alt }) => {
   
   const socialLogin = async () => {
-    // console.log("test");
-    // try {
-    //   const res = await Api.post('/auth/kakao');
-    //   // console.log(res);
-    // } catch (error) {
-    //   return;
-    // }
-    
-    // if(alt === "Google"){
-    //   console.log("Google");
-    // }
-    // if(alt === "Facebook"){
-    //   console.log("Facebook");
-    // }
-    // if(alt === "Kakaotalk"){
-    //   console.log("Kakaotalk");
-    // }
-    // if(alt === "Naver"){
-    //   console.log("Naver");
-    // }
+    try {
+      const res = await Api.get('/auth/kakao');
+      console.log(res);
+      console.log("test");
+    } catch (err) {
+      // if (!err.response.data) {
+      //   return;
+      // }
+
+    }
   }
 
   return (
     <SocialButtonContainer onClick={socialLogin}>
-      <a href="http://localhost:8080/auth/naver"><img src={img} alt={alt} /></a>
+      <img src={img} alt={alt} />
     </SocialButtonContainer>
   );
 };
