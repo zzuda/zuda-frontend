@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Api from '../../../Api';
 
 const SocialButtonContainer = styled.button`
   width: 52px;
@@ -29,24 +30,32 @@ const SocialButtonContainer = styled.button`
 
 const SocialButton = ({ img, alt }) => {  
   
-  const onClickSocial = () => {
-    if(alt === "Google"){
-      console.log("Google");
-    }
-    if(alt === "Facebook"){
-      console.log("Facebook");
-    }
-    if(alt === "Kakaotalk"){
-      console.log("Kakaotalk");
-    }
-    if(alt === "Naver"){
-      console.log("Naver");
-    }   
+  const socialLogin = async () => {
+    // console.log("test");
+    // try {
+    //   const res = await Api.post('/auth/kakao');
+    //   // console.log(res);
+    // } catch (error) {
+    //   return;
+    // }
+    
+    // if(alt === "Google"){
+    //   console.log("Google");
+    // }
+    // if(alt === "Facebook"){
+    //   console.log("Facebook");
+    // }
+    // if(alt === "Kakaotalk"){
+    //   console.log("Kakaotalk");
+    // }
+    // if(alt === "Naver"){
+    //   console.log("Naver");
+    // }
   }
-  
+
   return (
-    <SocialButtonContainer onClick={onClickSocial}>
-      <img src={img} alt={alt} />
+    <SocialButtonContainer onClick={socialLogin}>
+      <a href="http://localhost:8080/auth/naver"><img src={img} alt={alt} /></a>
     </SocialButtonContainer>
   );
 };
