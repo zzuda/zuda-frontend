@@ -5,6 +5,7 @@ import Main from '../components/Main';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import logo from '../assets/LOGO.png';
+import AdminPage from '../../src/pages/AdminPage/index'
 
 const Container = styled.div`
   position: relative;
@@ -37,9 +38,10 @@ const SwitchingComponent = () => {
 const MainPage = () => {
   return (
     <Container>
-      <Logo src={logo} alt="zuda_logo" />
+      {/* <Logo src={logo} alt="zuda_logo" />
       <SwitchingComponent />
-      <ParallaxBG />
+      <ParallaxBG /> */}
+      <AdminPage/>
     </Container>
   );
 };
