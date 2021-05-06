@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProfileMenu from '../../components/Admin/ProfileMenu';
+import ProfileMenu from '../../components/Admin/MenuBar/ProfileMenu';
+import MainMenu from '../../components/Admin/MenuBar/MainMenu';
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +12,6 @@ const Container = styled.div`
 const MenuBar = styled.div`
   width: 385px;
   height: 100%;
-  background-color: #e8e8e8;
   color: white;
 `;
 
@@ -22,11 +22,18 @@ const Preview = styled.div`
   border-right: 4px solid #ececec;
 `;
 
+const SearchBar = styled.input`
+  border: none;
+  
+  margin: 0 auto;
+`;
+
 const AdminPage = () => {
   return (
     <Container>
       <MenuBar>
-        <ProfileMenu>sd</ProfileMenu>
+        <ProfileMenu></ProfileMenu>
+        <MainMenu></MainMenu>
       </MenuBar>
       <Preview>sadsad</Preview>
     </Container>
