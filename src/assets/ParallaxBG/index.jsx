@@ -22,7 +22,7 @@ const Image = styled.img`
 const ParallaxBG = ({ children }) => {
   useEffect(() => {
     const scene = document.getElementById('scene');
-    const parallax = new Parallax(scene);
+    new Parallax(scene);
   }, []);
 
   return (
