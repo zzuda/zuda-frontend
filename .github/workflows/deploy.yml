@@ -41,6 +41,7 @@ jobs:
       - name: Build
         env:
           GENERATE_SOURCEMAP: false
+          CI: true
         run: yarn build
 
       - name: Deploy
