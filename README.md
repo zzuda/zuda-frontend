@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+[![zuda-frontend-deploy](https://github.com/zzuda/zuda-frontend/actions/workflows/deploy.yml/badge.svg)](https://github.com/zzuda/zuda-frontend/actions/workflows/deploy.yml)
+
+# Getting Started with Create React App 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
