@@ -28,6 +28,7 @@ jobs:
         run: yarn lint
 
   deploy:
+    needs: lint
     runs-on: ubuntu-18.04
     steps:
       - name: Build
