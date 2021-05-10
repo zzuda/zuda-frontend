@@ -10,8 +10,8 @@ jobs:
 #   lint:
 #     runs-on: ubuntu-18.04
 #     steps:
-#       - name: Checkout source code.
-#         uses: actions/checkout@master
+#       - name: Checkout
+#         uses: actions/checkout@v2
 
 #       - name: Cache node modules
 #         uses: actions/cache@v2
@@ -32,6 +32,9 @@ jobs:
 #     needs: lint
     runs-on: ubuntu-18.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install Dependencies
         run: yarn
 
