@@ -6,29 +6,30 @@ on:
       - created
 
 jobs:
-  lint:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout source code.
-        uses: actions/checkout@master
+# Enable this when lint step is required
+#   lint:
+#     runs-on: ubuntu-18.04
+#     steps:
+#       - name: Checkout source code.
+#         uses: actions/checkout@master
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+#       - name: Cache node modules
+#         uses: actions/cache@v2
+#         with:
+#           path: node_modules
+#           key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+#           restore-keys: |
+#             ${{ runner.OS }}-build-
+#             ${{ runner.OS }}-
 
-      - name: Install Dependencies
-        run: yarn
+#       - name: Install Dependencies
+#         run: yarn
 
-      - name: Run ESLint
-        run: yarn lint
+#       - name: Run ESLint
+#         run: yarn lint
 
   deploy:
-    needs: lint
+#     needs: lint
     runs-on: ubuntu-18.04
     steps:
       - name: Build
