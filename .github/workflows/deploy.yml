@@ -32,10 +32,14 @@ jobs:
 #     needs: lint
     runs-on: ubuntu-18.04
     steps:
+      - name: Install Dependencies
+        run: yarn
+
       - name: Build
         env:
           GENERATE_SOURCEMAP: false
         run: yarn build
+
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
