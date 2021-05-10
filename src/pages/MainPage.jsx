@@ -33,7 +33,7 @@ const SwitchingComponent = ({ page }) => {
 };
 
 const MainPage = () => {
-  const [page] = useState('main');
+  const [page, setPage] = useState('main');
 
   return (
     <Container>
