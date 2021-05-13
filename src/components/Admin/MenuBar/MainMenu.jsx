@@ -24,7 +24,7 @@ const MenuText = styled.li`
 
 
 const MainMenu = () => {
-    return(,
+    return(
         <Container>
             <SearchBar/>
             <ul>
