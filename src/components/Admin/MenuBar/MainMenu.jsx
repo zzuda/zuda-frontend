@@ -5,14 +5,17 @@ const Container = styled.div`
     width: 100%;
     height: 77%;
     background-color: #e8e8e8;
+    padding-top:40px;
 `;
 
 const SearchBar = styled.input`
     border: none;
+    display: block;
+
+    width: 200px;
+    height: 20px;
     
     margin: 0 auto;
-    margin-top:20px;
-    margin-left: 105px;
 `;
 
 const MenuText = styled.li`

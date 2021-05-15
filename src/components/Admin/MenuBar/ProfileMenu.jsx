@@ -9,11 +9,14 @@ const Container = styled.div`
   padding: 2rem;
 `;
 
+const ProfileBox = styled.div`
+  margin-top:40px;
+`;
+
 const MyName = styled.div`
   font-size: 37px;
   font-weight: 700;
   
-  margin-top: 25px;
   text-align: center;
 
   color: #585858;
@@ -22,17 +25,20 @@ const MyName = styled.div`
 const MyEmail = styled.div`
   text-align: center;
 
+  line-height: 5px;
   font-size: 16px;
 
-  color: #9f9f9f;
+  color: #9f9f9f; 
 `;
 
 const ProfileMenu = () => {
   return (
     <Container>
       <SmallText>MENU</SmallText>
-      <MyName>MY NAME</MyName>
-      <MyEmail>example@zuda.com</MyEmail>
+      <ProfileBox>
+        <MyName>MY NAME</MyName>
+        <MyEmail>example@zuda.com</MyEmail>
+      </ProfileBox>
     </Container>
   );
 };
