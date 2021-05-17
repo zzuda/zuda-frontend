@@ -18,10 +18,15 @@ const SearchBar = styled.input`
     margin: 0 auto;
 `;
 
+const MenuFrame = styled.ul`
+
+`;
+
 const MenuText = styled.li`
     text-align: center;
     
-    font-size: 28px;
+    font-size: 26px;
+    font-weight: 600;
     color: #555;
 `;
 
@@ -30,11 +35,11 @@ const MainMenu = () => {
     return(
         <Container>
             <SearchBar/>
-            <ul>
-                <MenuText>fasdfadsfasf</MenuText>
-                <MenuText>fasdfadsfasf</MenuText>
-                <MenuText>fasdfadsfasf</MenuText>
-            </ul>
+            <MenuFrame>
+                <MenuText>방관리</MenuText>
+                <MenuText>출석관리</MenuText>
+                <MenuText>파일 공유 관리</MenuText>
+            </MenuFrame>
         </Container>
     )
 }
