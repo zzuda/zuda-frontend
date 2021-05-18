@@ -19,6 +19,14 @@ const SearchBar = styled.input`
 `;
 
 const MenuFrame = styled.ul`
+    margin-top:120px;
+    
+    width: 400px;
+    height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 `;
 
