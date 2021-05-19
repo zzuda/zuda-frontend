@@ -5,22 +5,36 @@ const Container = styled.div`
     width: 100%;
     height: 77%;
     background-color: #e8e8e8;
-    padding-top:40px;
+    padding-top: 90px;
 `;
 
 const SearchBar = styled.input`
-    border: none;
+    margin: 0 auto;
+    
+    border: 0;
+    border-bottom: 1.5px solid #949494;
     display: block;
 
-    width: 200px;
-    height: 20px;
-    
-    margin: 0 auto;
+    width: 250px;
+    height: 50px;
+
+    background-color: #e8e8e8;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: #e0e0e0;
+        transition: 0.3s ease-in-out;
+    }
+    &:focus {
+        outline: none;
+    }
 `;
+
 
 const MenuFrame = styled.ul`
     margin: 0 auto;
-    margin-top: 140px;
+    margin-top: 80px;
 
     width: 250px;
     height: 180px;
@@ -61,7 +75,7 @@ const HelpText = styled.p`
 const MainMenu = () => {
     return(
         <Container>
-            <SearchBar/>
+            <SearchBar></SearchBar>
             <MenuFrame>
                 <MenuText>방관리</MenuText>
                 <MenuText>출석관리</MenuText>
