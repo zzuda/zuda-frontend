@@ -19,9 +19,10 @@ const SearchBar = styled.input`
 `;
 
 const MenuFrame = styled.ul`
-    margin-top:120px;
-    
-    width: 400px;
+    margin: 0 auto;
+    margin-top: 140px;
+
+    width: 250px;
     height: 180px;
 
     display: flex;
@@ -31,11 +32,16 @@ const MenuFrame = styled.ul`
 `;
 
 const MenuText = styled.li`
-    text-align: center;
+    /* text-align: center; */
+    list-style: none;
     
     font-size: 26px;
     font-weight: 600;
     color: #555;
+`;
+
+const HelpText = styled.p`
+    color: #717171;
 `;
 
 
@@ -48,6 +54,9 @@ const MainMenu = () => {
                 <MenuText>출석관리</MenuText>
                 <MenuText>파일 공유 관리</MenuText>
             </MenuFrame>
+            <HelpText>도움말</HelpText>
+            <HelpText>주다 서비스</HelpText>
+            <HelpText>연락처</HelpText>
         </Container>
     )
 }
