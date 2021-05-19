@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ProfileMenu from '../../components/Admin/MenuBar/ProfileMenu';
 import MainMenu from '../../components/Admin/MenuBar/MainMenu';
+import { SmallText } from '../../../src/atomic/Texts'
 
 const Container = styled.div`
   display: flex;
@@ -18,8 +19,9 @@ const MenuBar = styled.div`
 const Preview = styled.div`
   width: 385px;
   height: 100%;
+  
   background-color: #fdfdfd;
-  border-right: 4px solid #ececec;
+  border-right: 3px solid #ececec;
 `;
 
 const SearchBar = styled.input`
@@ -35,7 +37,9 @@ const AdminPage = () => {
         <ProfileMenu></ProfileMenu>
         <MainMenu></MainMenu>
       </MenuBar>
-      <Preview>sadsad</Preview>
+      <Preview>
+        <SmallText>출석 LIST</SmallText>
+      </Preview>
     </Container>
   );
 };
