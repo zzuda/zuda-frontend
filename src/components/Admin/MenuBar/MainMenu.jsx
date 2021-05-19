@@ -40,8 +40,21 @@ const MenuText = styled.li`
     color: #555;
 `;
 
+const HelpMenuFrame = styled.ul`
+    margin: 0 auto;
+    margin-top: 7rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 240px;
+    height: 100px;
+`;
+
 const HelpText = styled.p`
     color: #717171;
+    font-weight: 600;
 `;
 
 
@@ -54,9 +67,11 @@ const MainMenu = () => {
                 <MenuText>출석관리</MenuText>
                 <MenuText>파일 공유 관리</MenuText>
             </MenuFrame>
-            <HelpText>도움말</HelpText>
-            <HelpText>주다 서비스</HelpText>
-            <HelpText>연락처</HelpText>
+            <HelpMenuFrame>
+                <HelpText>도움말</HelpText>
+                <HelpText>주다 서비스</HelpText>
+                <HelpText>연락처</HelpText>
+            </HelpMenuFrame>
         </Container>
     )
 }
