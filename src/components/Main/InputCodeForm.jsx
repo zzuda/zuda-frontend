@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Input = styled.input`
@@ -18,10 +18,15 @@ const Input = styled.input`
   outline: none;
 `;
 
-const InputCodeFrom = () => {
+const InputCodeFrom = ({ onChange, input }) => {
   return (
     <>
-      <Input type="text" placeholder="입장 코드를 입력해보세요!" />
+      <Input
+        type="text"
+        placeholder="입장 코드를 입력해보세요!"
+        onChange={onChange}
+        value={input}
+      />
     </>
   );
 };
