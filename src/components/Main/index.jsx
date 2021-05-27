@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import InputCodeForm from '../Main/InputCodeForm';
 import RedButton from '../../atomic/buttons/RedButton';
-
 import TextLoop from 'react-text-loop';
+import SocketContext from '../../Contexts/socket';
+import { Redirect } from 'react-router-dom';
 
 const Container = styled.div`
   position: absolute;
@@ -45,6 +46,59 @@ const InputDiv = styled.div`
 `;
 
 const Main = () => {
+  const [input, setInput] = useState('');
+  const [isJoin, setIsJoin] = useState(false);
+  const [info, setInfo] = useState(null);
+
+  const socket = useContext(SocketContext);
+
+  useEffect(() => {
+    if (!info) {
+      return;
+    }
+
+    setIsJoin(true);
+  }, [info]);
+
+  useEffect(() => {
+    console.log('sd');
+    if (isJoin) {
+      <Redirect to="/room" />;
+    }
+  }, [isJoin]);
+
+  useEffect(() => {
+    socket.on('join', (data) => {
+      console.log(data.roomInfo);
+      setInfo(data.roomInfo);
+    });
+
+    return () => {
+      socket.off('join', (data) => {
+        console.log(data);
+      });
+    };
+  }, [socket]);
+
+  useEffect(() => {
+    socket.on('exception', (err) => {
+      console.log(err);
+    });
+
+    socket.off('exception', (err) => {
+      console.log(err);
+    });
+  }, [socket]);
+
+  const onInputChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const onClickEnter = () => {
+    socket.emit('join', { inviteCode: input, name: 'test' });
+    setInput('');
+  };
+
   return (
     <Container>
       <TextLoop interval={3000}>
@@ -55,8 +109,15 @@ const Main = () => {
       </TextLoop>
       <LoopText2>주다</LoopText2>
       <InputDiv>
-        <InputCodeForm />
-        <RedButton width={126} height={70} radius={50} fSize={40} moveX={-126}>
+        <InputCodeForm onChange={onInputChange} input={input} />
+        <RedButton
+          width={126}
+          height={70}
+          radius={50}
+          fSize={40}
+          moveX={-126}
+          onClick={onClickEnter}
+        >
           ➜
         </RedButton>
       </InputDiv>
