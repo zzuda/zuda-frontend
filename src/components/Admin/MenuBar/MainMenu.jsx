@@ -52,6 +52,12 @@ const MenuText = styled.li`
     font-size: 26px;
     font-weight: 600;
     color: #555;
+
+    &:hover{
+        color: #ff4141;
+
+        border-right: 3px solid #ff4141;
+    }
 `;
 
 const HelpMenuFrame = styled.ul`
