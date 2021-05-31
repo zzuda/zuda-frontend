@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Frame = styled.div`
-    width: 385px;
+    width: 300px;
     
-    margin: 45px 10px;
+    margin: 45px 20px;
 `;
 
 const TitleText = styled.h3`
@@ -16,8 +16,8 @@ const All = styled.div`
     display: flex;
     justify-content: space-between;
 
-    margin-right: 90px;
-    line-height: 50%;
+    padding-right: 80px;
+    /* line-height: 50%; */
     
 `;
 
