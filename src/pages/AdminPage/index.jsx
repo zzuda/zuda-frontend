@@ -21,7 +21,7 @@ const Preview = styled.div`
   width: 385px;
   height: 100%;
   
-  padding: 2rem;
+  /* padding: 2rem; */
 
   background-color: #fdfdfd;
   border-right: 3px solid #ececec;
