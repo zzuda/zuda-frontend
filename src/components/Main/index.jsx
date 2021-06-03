@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import InputCodeForm from '../Main/InputCodeForm';
 import RedButton from '../../atomic/buttons/RedButton';
 import TextLoop from 'react-text-loop';
-import SocketContext from '../../Contexts/socket';
 import { Redirect } from 'react-router-dom';
+import SocketContext from '../../contexts/socket';
 
 const Container = styled.div`
   position: absolute;
