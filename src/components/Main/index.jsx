@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import InputCodeForm from '../Main/InputCodeForm';
 import RedButton from '../../atomic/buttons/RedButton';
 import TextLoop from 'react-text-loop';
-import { Redirect } from 'react-router-dom';
 import SocketContext from '../../contexts/socket';
+import RoomInfoContext from '../../contexts/roomInfo';
+import { useHistory } from 'react-router-dom';
+import Modal from 'react-modal';
 
 const Container = styled.div`
   position: absolute;
@@ -45,40 +47,48 @@ const InputDiv = styled.div`
   }
 `;
 
+const InputNameModal = styled(Modal)`
+  position: absolute;
+  padding-left: 3rem;
+  width: 700px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 45px;
+  outline: none;
+`;
+
 const Main = () => {
-  const [input, setInput] = useState('');
-  const [isJoin, setIsJoin] = useState(false);
-  const [info, setInfo] = useState(null);
+  const [input, setInput] = useState({
+    inviteCode: '',
+    name: '',
+  });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const setInfo = useContext(RoomInfoContext)[1];
 
   const socket = useContext(SocketContext);
+  const history = useHistory();
+
+  const fetchRoomInfo = useCallback(
+    (res) => {
+      setInfo((prevState) => res);
+      history.push('/room');
+    },
+    [setInfo, history],
+  );
 
   useEffect(() => {
-    if (!info) {
-      return;
-    }
-
-    setIsJoin(true);
-  }, [info]);
-
-  useEffect(() => {
-    console.log('sd');
-    if (isJoin) {
-      <Redirect to="/room" />;
-    }
-  }, [isJoin]);
-
-  useEffect(() => {
-    socket.on('join', (data) => {
-      console.log(data.roomInfo);
-      setInfo(data.roomInfo);
-    });
+    socket.on('join', (res) => fetchRoomInfo(res));
 
     return () => {
-      socket.off('join', (data) => {
-        console.log(data);
-      });
+      socket.off('join', (res) => fetchRoomInfo(res));
     };
-  }, [socket]);
+  }, [socket, fetchRoomInfo]);
 
   useEffect(() => {
     socket.on('exception', (err) => {
@@ -90,13 +100,21 @@ const Main = () => {
     });
   }, [socket]);
 
-  const onInputChange = (e) => {
-    setInput(e.target.value);
+  const onInputChange = (e, type) => {
+    setInput((prevInput) => ({ ...prevInput, [type]: e.target.value }));
   };
 
   const onClickEnter = () => {
-    socket.emit('join', { inviteCode: input, name: 'test' });
+    const { inviteCode, name } = input;
+    socket.emit('join', { inviteCode, name });
     setInput('');
+  };
+
+  const openModal = () => {
+    if (!input.inviteCode) {
+      return;
+    }
+    setIsModalOpen(true);
   };
 
   return (
@@ -109,18 +127,48 @@ const Main = () => {
       </TextLoop>
       <LoopText2>주다</LoopText2>
       <InputDiv>
-        <InputCodeForm onChange={onInputChange} input={input} />
+        <InputCodeForm
+          onChange={(e) => onInputChange(e, 'inviteCode')}
+          input={input.inviteCode || ''}
+          placeholder="입장코드를 입력해주세요!"
+        />
         <RedButton
           width={126}
           height={70}
           radius={50}
           fSize={40}
           moveX={-126}
-          onClick={onClickEnter}
+          onClick={openModal}
         >
           ➜
         </RedButton>
       </InputDiv>
+      <InputNameModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0,0,0, 0.4)',
+          },
+        }}
+        ariaHideApp={false}
+      >
+        <InputCodeForm
+          onChange={(e) => onInputChange(e, 'name')}
+          input={input.name || ''}
+          placeholder="사용할 이름을 입력해주세요!"
+        />
+        <RedButton
+          width={126}
+          height={70}
+          radius={50}
+          fSize={24}
+          moveX={-126}
+          onClick={onClickEnter}
+        >
+          입장!
+        </RedButton>
+      </InputNameModal>
     </Container>
   );
 };
