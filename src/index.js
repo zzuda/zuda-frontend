@@ -4,6 +4,7 @@ import './styles/global.css';
 import MainPage from './pages/MainPage';
 import RoomPage from './pages/RoomPage';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { SocketProvider } from './hooks/useSocket';
 import { RoomInfoProvider } from './hooks/useRoom';
 
@@ -17,6 +18,7 @@ ReactDOM.render(
         </BrowserRouter>
       </RoomInfoProvider>
     </SocketProvider>
+    <Toaster />
   </React.StrictMode>,
   document.getElementById('root'),
 );

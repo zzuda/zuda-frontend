@@ -85,12 +85,21 @@ const Main = () => {
 
   const onClickEnter = () => {
     const { inviteCode, name } = input;
+    if (!name) {
+      toast.error('이름을 입력해주세요!', {
+        duration: 1500,
+      });
+      return;
+    }
     socket.emit('join', { inviteCode, name });
     setInput('');
   };
 
   const openModal = () => {
     if (!input.inviteCode) {
+      toast.error('입장코드를 입력해주세요!', {
+        duration: 1500,
+      });
       return;
     }
     setIsModalOpen(true);
