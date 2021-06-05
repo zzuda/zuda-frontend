@@ -34,10 +34,10 @@ const SearchBar = styled.input`
 
 const MenuFrame = styled.ul`
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 4em;
 
     width: 250px;
-    height: 180px;
+    height: 130px;
 
     display: flex;
     flex-direction: column;
@@ -84,7 +84,6 @@ const MainMenu = () => {
             <SearchBar></SearchBar>
             <MenuFrame>
                 <MenuText>방관리</MenuText>
-                <MenuText>출석관리</MenuText>
                 <MenuText>파일 공유 관리</MenuText>
             </MenuFrame>
             <HelpMenuFrame>
