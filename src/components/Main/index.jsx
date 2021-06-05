@@ -53,8 +53,8 @@ const InputDiv = styled.div`
 
 const InputNameModal = styled(Modal)`
   position: absolute;
-  padding-left: 3rem;
-  width: 700px;
+  padding-left: 4rem;
+  width: 600px;
   height: 200px;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -159,7 +159,7 @@ const Main = () => {
           height={70}
           radius={50}
           fSize={24}
-          moveX={-126}
+          moveX={-65}
           onClick={onClickEnter}
         >
           입장!
