@@ -18,9 +18,7 @@ const Logo = styled.img`
   width: 338px;
 `;
 
-const SwitchingComponent = () => {
-  const [page, setPage] = useState('main');
-
+const SwitchingComponent = ({ page }) => {
   if (!page) {
     return <div>로딩중..</div>;
   }
@@ -36,12 +34,15 @@ const SwitchingComponent = () => {
 };
 
 const MainPage = () => {
+  const [page, setPage] = useState('main');
+
   return (
     <Container>
+      <AdminPage>
       {/* <Logo src={logo} alt="zuda_logo" />
       <SwitchingComponent />
       <ParallaxBG /> */}
-      <AdminPage/>
+      </AdminPage>
     </Container>
   );
 };

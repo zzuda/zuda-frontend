@@ -1,0 +1,54 @@
+name: zuda-frontend-deploy
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - created
+
+jobs:
+# Enable this when lint step is required
+#   lint:
+#     runs-on: ubuntu-18.04
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+
+#       - name: Cache node modules
+#         uses: actions/cache@v2
+#         with:
+#           path: node_modules
+#           key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+#           restore-keys: |
+#             ${{ runner.OS }}-build-
+#             ${{ runner.OS }}-
+
+#       - name: Install Dependencies
+#         run: yarn
+
+#       - name: Run ESLint
+#         run: yarn lint
+
+  deploy:
+#     needs: lint
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build
+        env:
+          GENERATE_SOURCEMAP: false
+          CI: true
+        run: yarn build
+
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.FTP_HOST }}
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./build/
+          git-ftp-args: --insecure
