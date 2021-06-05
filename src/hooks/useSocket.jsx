@@ -20,17 +20,21 @@ export const SocketProvider = ({ children }) => {
 
 export const useSocket = () => useContext(SocketContext);
 
-export const useSocketJoin = () => {
+export const useSocketJoin = (name) => {
   const setInfo = useRoom()[1];
   const history = useHistory();
   const socket = useSocket();
 
   const fetchRoomInfo = useCallback(
     (res) => {
-      setInfo((prevState) => res);
+      const info = {
+        ...res,
+        name,
+      };
+      setInfo((prevState) => info);
       history.push('/room');
     },
-    [setInfo, history],
+    [setInfo, history, name],
   );
 
   useEffect(() => {

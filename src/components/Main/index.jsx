@@ -83,6 +83,7 @@ const Main = () => {
     setInput((prevInput) => ({ ...prevInput, [type]: e.target.value }));
   };
 
+  useSocketJoin(name);
   const onClickEnter = () => {
     const { inviteCode, name } = input;
     if (!name) {
