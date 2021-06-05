@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import RedButton from '../atomic/buttons/RedButton';
-import { useRoom } from '../hooks/useRoom';
+import { useInfo } from '../hooks/useInfo';
 import {
   useSocket,
   useSocketQuit,
@@ -9,7 +9,7 @@ import {
 } from '../hooks/useSocket';
 
 const RoomPage = () => {
-  const { userInfo, roomInfo } = useRoom()[0];
+  const { userInfo, roomInfo } = useInfo()[0];
   const { id, name } = userInfo;
   const socket = useSocket();
 

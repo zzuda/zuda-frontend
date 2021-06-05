@@ -6,17 +6,17 @@ import RoomPage from './pages/RoomPage';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { SocketProvider } from './hooks/useSocket';
-import { RoomInfoProvider } from './hooks/useRoom';
+import { InfoProvider } from './hooks/useInfo';
 
 ReactDOM.render(
   <React.StrictMode>
     <SocketProvider>
-      <RoomInfoProvider>
+      <InfoProvider>
         <BrowserRouter>
           <Route exact path="/" component={MainPage} />
           <Route path="/room" component={RoomPage} />
         </BrowserRouter>
-      </RoomInfoProvider>
+      </InfoProvider>
     </SocketProvider>
     <Toaster />
   </React.StrictMode>,

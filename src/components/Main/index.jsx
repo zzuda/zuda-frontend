@@ -10,7 +10,7 @@ import {
   useSocketJoin,
   useSocketExecption,
 } from '../../hooks/useSocket';
-import { useRoom } from '../../hooks/useRoom';
+import { useInfo } from '../../hooks/useInfo';
 
 const Container = styled.div`
   position: absolute;
@@ -71,7 +71,7 @@ const Main = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const socket = useSocket();
-  const setInfo = useRoom()[1];
+  const setInfo = useInfo()[1];
 
   const [input, setInput] = useState({
     inviteCode: '',

@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { useHistory } from 'react-router-dom';
 import io from 'socket.io-client';
-import { initialRoom, useRoom } from './useRoom';
+import { initialRoom, useInfo } from './useInfo';
 import toast from 'react-hot-toast';
 
 const SocketContext = createContext(null);
@@ -21,7 +21,7 @@ export const SocketProvider = ({ children }) => {
 export const useSocket = () => useContext(SocketContext);
 
 export const useSocketJoin = () => {
-  const setInfo = useRoom()[1];
+  const setInfo = useInfo()[1];
   const history = useHistory();
   const socket = useSocket();
 
@@ -47,7 +47,7 @@ export const useSocketJoin = () => {
 };
 
 export const useSocketQuit = () => {
-  const setInfo = useRoom()[1];
+  const setInfo = useInfo()[1];
   const socket = useSocket();
 
   const handleQuit = useCallback(() => {
