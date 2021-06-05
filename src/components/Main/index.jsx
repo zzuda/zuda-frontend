@@ -71,9 +71,6 @@ const Main = () => {
 
   const socket = useSocket();
 
-  useSocketJoin();
-  useSocketExecption();
-
   const [input, setInput] = useState({
     inviteCode: '',
     name: '',
@@ -83,9 +80,12 @@ const Main = () => {
     setInput((prevInput) => ({ ...prevInput, [type]: e.target.value }));
   };
 
+  const { inviteCode, name } = input;
+
   useSocketJoin(name);
+  useSocketExecption();
+
   const onClickEnter = () => {
-    const { inviteCode, name } = input;
     if (!name) {
       toast.error('이름을 입력해주세요!', {
         duration: 1500,
@@ -98,7 +98,7 @@ const Main = () => {
   };
 
   const openModal = () => {
-    if (!input.inviteCode) {
+    if (!inviteCode) {
       toast.error('입장코드를 입력해주세요!', {
         duration: 1500,
       });
@@ -119,7 +119,7 @@ const Main = () => {
       <InputDiv>
         <InputCodeForm
           onChange={(e) => onInputChange(e, 'inviteCode')}
-          input={input.inviteCode || ''}
+          input={inviteCode || ''}
           placeholder="입장코드를 입력해주세요!"
         />
         <RedButton
@@ -145,7 +145,7 @@ const Main = () => {
       >
         <InputCodeForm
           onChange={(e) => onInputChange(e, 'name')}
-          input={input.name || ''}
+          input={name || ''}
           placeholder="방에서 사용할 이름을 입력해주세요!"
         />
         <RedButton
