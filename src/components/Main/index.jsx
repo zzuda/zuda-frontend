@@ -93,6 +93,7 @@ const Main = () => {
     }
     socket.emit('join', { inviteCode, name });
     setInput('');
+    setIsModalOpen(false);
   };
 
   const openModal = () => {
