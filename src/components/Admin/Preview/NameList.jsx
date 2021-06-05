@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { SmallText } from '../../../atomic/Texts/index';
 
-const Frame = styled.div`
+const Container = styled.div`
     width: 300px;
     
     margin: 45px 20px;
@@ -16,8 +17,12 @@ const All = styled.div`
     display: flex;
     justify-content: space-between;
 
-    padding-right: 80px;
-    /* line-height: 50%; */
+    width: 280px;
+
+    padding-right: 30px;
+    line-height: 50%;
+
+    margin: 4em 0 0 2em;
     
 `;
 
@@ -38,7 +43,8 @@ const NameList = () => {
     const [UserCount, setUserCount] = useState(129)
 
     return(
-        <Frame>
+        <Container>
+            <SmallText>유저 LIST</SmallText>
             <All>
                 <TitleText>전체</TitleText>
                 <Count>{ UserCount }</Count>
@@ -46,7 +52,7 @@ const NameList = () => {
             <Room>
                 
             </Room>
-        </Frame>
+        </Container>
     );
 };
 
