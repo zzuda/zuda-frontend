@@ -1,41 +1,26 @@
-import React, { useCallback, useContext, useEffect } from 'react';
-import SocketContext from '../contexts/socket';
-import RoomInfoContext from '../contexts/roomInfo';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import RedButton from '../atomic/buttons/RedButton';
+import { useRoom } from '../hooks/useRoom';
+import {
+  useSocket,
+  useSocketQuit,
+  useSocketExecption,
+} from '../hooks/useSocket';
 
 const RoomPage = () => {
-  const [info, setInfo] = useContext(RoomInfoContext);
-  const socket = useContext(SocketContext);
+  const info = useRoom()[0];
+  const socket = useSocket();
 
   const onClickQuit = () => {
     if (!info) {
       return;
     }
-    socket.emit('quit', { roomId: info.roomInfo.roomId, questId: info.id });
+    socket.emit('quit', { roomId: info.roomInfo.roomId, guestId: info.id });
   };
 
-  const handleQuit = useCallback(() => {
-    setInfo(null);
-  }, [setInfo]);
-
-  useEffect(() => {
-    socket.on('quit', handleQuit);
-
-    return () => {
-      socket.off('quit', handleQuit);
-    };
-  }, [socket, handleQuit]);
-
-  useEffect(() => {
-    socket.on('exception', (err) => {
-      console.log(err);
-    });
-
-    socket.off('exception', (err) => {
-      console.log(err);
-    });
-  }, [socket]);
+  useSocketQuit();
+  useSocketExecption();
 
   if (!info) {
     return <Redirect to="/" />;

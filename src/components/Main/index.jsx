@@ -1,12 +1,15 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import InputCodeForm from '../Main/InputCodeForm';
 import RedButton from '../../atomic/buttons/RedButton';
 import TextLoop from 'react-text-loop';
-import SocketContext from '../../contexts/socket';
-import RoomInfoContext from '../../contexts/roomInfo';
-import { useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
+import toast from 'react-hot-toast';
+import {
+  useSocket,
+  useSocketJoin,
+  useSocketExecption,
+} from '../../hooks/useSocket';
 
 const Container = styled.div`
   position: absolute;
@@ -64,41 +67,17 @@ const InputNameModal = styled(Modal)`
 `;
 
 const Main = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const socket = useSocket();
+
+  useSocketJoin();
+  useSocketExecption();
+
   const [input, setInput] = useState({
     inviteCode: '',
     name: '',
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const setInfo = useContext(RoomInfoContext)[1];
-
-  const socket = useContext(SocketContext);
-  const history = useHistory();
-
-  const fetchRoomInfo = useCallback(
-    (res) => {
-      setInfo((prevState) => res);
-      history.push('/room');
-    },
-    [setInfo, history],
-  );
-
-  useEffect(() => {
-    socket.on('join', (res) => fetchRoomInfo(res));
-
-    return () => {
-      socket.off('join', (res) => fetchRoomInfo(res));
-    };
-  }, [socket, fetchRoomInfo]);
-
-  useEffect(() => {
-    socket.on('exception', (err) => {
-      console.log(err);
-    });
-
-    socket.off('exception', (err) => {
-      console.log(err);
-    });
-  }, [socket]);
 
   const onInputChange = (e, type) => {
     setInput((prevInput) => ({ ...prevInput, [type]: e.target.value }));
