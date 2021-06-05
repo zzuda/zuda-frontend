@@ -145,7 +145,7 @@ const Main = () => {
         <InputCodeForm
           onChange={(e) => onInputChange(e, 'name')}
           input={input.name || ''}
-          placeholder="사용할 이름을 입력해주세요!"
+          placeholder="방에서 사용할 이름을 입력해주세요!"
         />
         <RedButton
           width={126}
