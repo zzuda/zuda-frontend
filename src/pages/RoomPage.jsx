@@ -9,27 +9,29 @@ import {
 } from '../hooks/useSocket';
 
 const RoomPage = () => {
-  const info = useRoom()[0];
+  const { userInfo, roomInfo } = useRoom()[0];
+  const { id, name } = userInfo;
   const socket = useSocket();
 
   const onClickQuit = () => {
-    if (!info) {
+    if (!roomInfo.roomId) {
       return;
     }
-    socket.emit('quit', { roomId: info.roomInfo.roomId, guestId: info.id });
+    socket.emit('quit', { roomId: roomInfo.roomId, guestId: id });
   };
 
   useSocketQuit();
   useSocketExecption();
 
-  if (!info) {
+  if (!roomInfo.roomId) {
     return <Redirect to="/" />;
   }
 
   return (
     <div>
-      <h3>{info.id}</h3>
-      <div>{info.roomInfo.roomName}</div>
+      <h3>{id}</h3>
+      <h3>{name}</h3>
+      <div>{roomInfo.roomName}</div>
       <RedButton onClick={onClickQuit}>Quit</RedButton>
     </div>
   );

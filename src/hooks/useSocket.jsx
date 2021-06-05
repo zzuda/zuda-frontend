@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { useHistory } from 'react-router-dom';
 import io from 'socket.io-client';
-import { useRoom } from './useRoom';
+import { initialRoom, useRoom } from './useRoom';
 import toast from 'react-hot-toast';
 
 const SocketContext = createContext(null);
@@ -20,21 +20,21 @@ export const SocketProvider = ({ children }) => {
 
 export const useSocket = () => useContext(SocketContext);
 
-export const useSocketJoin = (name) => {
+export const useSocketJoin = () => {
   const setInfo = useRoom()[1];
   const history = useHistory();
   const socket = useSocket();
 
   const fetchRoomInfo = useCallback(
     (res) => {
-      const info = {
-        ...res,
-        name,
-      };
-      setInfo((prevState) => info);
+      const { id, roomInfo } = res;
+      setInfo((prevState) => ({
+        userInfo: { ...prevState.userInfo, id },
+        roomInfo,
+      }));
       history.push('/room');
     },
-    [setInfo, history, name],
+    [setInfo, history],
   );
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export const useSocketQuit = () => {
     toast.success('성공적으로 퇴장하였습니다!', {
       duration: 1500,
     });
-    setInfo(null);
+    setInfo((prevState) => initialRoom);
   }, [setInfo]);
 
   useEffect(() => {

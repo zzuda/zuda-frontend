@@ -10,6 +10,7 @@ import {
   useSocketJoin,
   useSocketExecption,
 } from '../../hooks/useSocket';
+import { useRoom } from '../../hooks/useRoom';
 
 const Container = styled.div`
   position: absolute;
@@ -70,6 +71,7 @@ const Main = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const socket = useSocket();
+  const setInfo = useRoom()[1];
 
   const [input, setInput] = useState({
     inviteCode: '',
@@ -82,7 +84,7 @@ const Main = () => {
 
   const { inviteCode, name } = input;
 
-  useSocketJoin(name);
+  useSocketJoin();
   useSocketExecption();
 
   const onClickEnter = () => {
@@ -92,6 +94,10 @@ const Main = () => {
       });
       return;
     }
+    setInfo((prevState) => ({
+      ...prevState,
+      userInfo: { ...prevState.userInfo, name },
+    }));
     socket.emit('join', { inviteCode, name });
     setInput('');
     setIsModalOpen(false);

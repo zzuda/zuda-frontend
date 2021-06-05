@@ -2,8 +2,16 @@ import React, { useState, createContext, useContext } from 'react';
 
 const RoomInfoContext = createContext(null);
 
+const initialState = {
+  userInfo: {
+    id: '',
+    name: '',
+  },
+  roomInfo: {},
+};
+
 export const RoomInfoProvider = ({ children }) => {
-  const state = useState();
+  const state = useState(initialState);
 
   return (
     <RoomInfoContext.Provider value={state}>
@@ -13,3 +21,5 @@ export const RoomInfoProvider = ({ children }) => {
 };
 
 export const useRoom = () => useContext(RoomInfoContext);
+
+export const initialRoom = initialState;
