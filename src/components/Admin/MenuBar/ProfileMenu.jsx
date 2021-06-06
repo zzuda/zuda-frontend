@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { SmallText } from '../../../atomic/Texts/index';
+import Api from '../../../Api/index'
 
 const Container = styled.div`
   width: 100%;
@@ -32,6 +33,29 @@ const MyEmail = styled.div`
 `;
 
 const ProfileMenu = () => {
+  const [adminData, setAdminData] = useState([]);
+  
+  useEffect(() => {
+    console.log("Admin get시도");
+
+    const GetAdminData = async () =>{
+        const res = await Api.get('/room');
+        const responseData = res.data.data
+
+        console.log(res.data);
+        
+        responseData.forEach((value, index) => {
+          setAdminData((prevAdminData) => ([
+                ...prevAdminData, {
+                    "adminName" : index, 
+                    "adminEmail" : value
+                }
+            ]));
+        });
+    }
+    GetAdminData();
+}, []);
+
   return (
     <Container>
       <SmallText>MENU</SmallText>
