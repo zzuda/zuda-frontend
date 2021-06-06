@@ -18,10 +18,15 @@ const Input = styled.input`
   outline: none;
 `;
 
-const InputCodeFrom = () => {
+const InputCodeFrom = ({ onChange, input, placeholder }) => {
   return (
     <>
-      <Input type="text" placeholder="입장 코드를 입력해보세요!" />
+      <Input
+        type="text"
+        placeholder={placeholder}
+        onChange={onChange}
+        value={input}
+      />
     </>
   );
 };
