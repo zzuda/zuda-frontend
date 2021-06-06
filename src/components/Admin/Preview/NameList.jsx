@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import RoomUserList from './RoomUserList';
 import { SmallText } from '../../../atomic/Texts/index';
+import { CountText } from '../../../atomic/AdminText/index';
 
 const Container = styled.div`
     width: 300px;
     
-    margin: 45px 20px;
+    margin: 45px 32px;
+    
 `;
 
 const TitleText = styled.h3`
@@ -23,15 +25,8 @@ const All = styled.div`
     padding-right: 30px;
     line-height: 50%;
 
-    margin: 4em 0 0 2em;
+    margin: 4em 0 3em 2em;
     
-`;
-
-const Count = styled.span`
-    color: #717171;
-    
-    font-size: 16px;
-    font-weight: 600;
 `;
 
 const Room = styled.div`
@@ -48,7 +43,7 @@ const NameList = () => {
             <SmallText>유저 LIST</SmallText>
             <All>
                 <TitleText>전체</TitleText>
-                <Count>{ UserCount }</Count>
+                <CountText>{ UserCount }</CountText>
             </All>
             <Room>
                 <RoomUserList></RoomUserList>
