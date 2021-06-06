@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ProfileMenu from '../../components/Admin/MenuBar/ProfileMenu';
 import MainMenu from '../../components/Admin/MenuBar/MainMenu';
 import NameList from '../../components/Admin/Preview/NameList';
+import RoomBlock from '../../components/Admin/RoomBlock/RoomBlock'
 
 const Container = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ const AdminPage = () => {
       <Preview>
         <NameList></NameList>
       </Preview>
+      <RoomBlock/>
     </Container>
   );
 };
