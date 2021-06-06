@@ -32,26 +32,29 @@ const MyEmail = styled.div`
   color: #9f9f9f; 
 `;
 
+
 const ProfileMenu = () => {
+  // console.log(adminName);
   const [adminData, setAdminData] = useState([]);
   
   useEffect(() => {
     console.log("Admin get시도");
 
     const GetAdminData = async () =>{
-        const res = await Api.get('/room');
-        const responseData = res.data.data
+        const res = await Api.get('/auth/me');
+        const {name, email} = res.data.data
+        console.log(name, email);
 
-        console.log(res.data);
+        setAdminData((prevAdminData) => ([ 
+          ...prevAdminData, {
+            "1" : name, 
+            "2" : email
+            }
+          ])
+        );
+
+        console.log(adminData);
         
-        responseData.forEach((value, index) => {
-          setAdminData((prevAdminData) => ([
-                ...prevAdminData, {
-                    "adminName" : index, 
-                    "adminEmail" : value
-                }
-            ]));
-        });
     }
     GetAdminData();
 }, []);
