@@ -34,15 +34,14 @@ const SwitchingComponent = ({ page }) => {
 };
 
 const MainPage = () => {
-  const [page, setPage] = useState('main');
+  const [page, setPage] = useState('login');
 
   return (
     <Container>
-      <AdminPage>
+      <AdminPage></AdminPage>
       {/* <Logo src={logo} alt="zuda_logo" />
       <SwitchingComponent />
       <ParallaxBG /> */}
-      </AdminPage>
     </Container>
   );
 };
