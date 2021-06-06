@@ -6,9 +6,7 @@ import { CountText } from '../../../atomic/AdminText/index';
 
 const Container = styled.div`
     width: 300px;
-    
     margin: 45px 32px;
-    
 `;
 
 const TitleText = styled.h3`
