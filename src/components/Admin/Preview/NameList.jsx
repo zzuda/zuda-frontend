@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import LoadedList from '../Preview/LoadedList';
+import RoomUserList from './RoomUserList';
 import { SmallText } from '../../../atomic/Texts/index';
 
 const Container = styled.div`
@@ -51,7 +51,7 @@ const NameList = () => {
                 <Count>{ UserCount }</Count>
             </All>
             <Room>
-                <LoadedList></LoadedList>
+                <RoomUserList></RoomUserList>
             </Room>
         </Container>
     );
