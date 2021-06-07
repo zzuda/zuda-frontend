@@ -4,10 +4,13 @@ const InfoContext = createContext(null);
 
 const initialState = {
   userInfo: {
-    id: '',
-    name: '',
+    id: 'asd21sdxz',
+    name: '홍길동',
   },
-  roomInfo: {},
+  roomInfo: {
+    roomId: 4,
+    roomName: 'asdsda',
+  },
 };
 
 export const InfoProvider = ({ children }) => {
