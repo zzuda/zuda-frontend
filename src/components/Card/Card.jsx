@@ -16,3 +16,14 @@ export const InnerCard = styled.div`
   border-radius: 30px;
   position: relative;
 `;
+
+export const InnerText = styled.h3`
+  font-family: 'NanumSquare', sans-serif;
+  font-size: 14px;
+  color: #919191;
+  position: absolute;
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  bottom: ${(props) => props.btm}px;
+  right: ${(props) => props.right}px;
+`;
