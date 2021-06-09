@@ -14,6 +14,7 @@ const FileBoxContainer = styled.div`
   margin-bottom: 1rem;
   box-shadow: 1px 1px 16px #b9b9b9;
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.03);
@@ -57,13 +58,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 2.5rem 1rem 1rem 1rem;
 `;
 
-const UploadedFile = () => {
+const UploadedFile = ({ rStart, rEnd, cStart, cEnd }) => {
   return (
-    <InnerCard w={475} h={290}>
-      <InnerText top={10} left={20}>
+    <InnerCard
+      w={475}
+      h={290}
+      rStart={rStart}
+      rEnd={rEnd}
+      cStart={cStart}
+      cEnd={cEnd}
+    >
+      <InnerText top={15} left={30}>
         업로드한 파일
       </InnerText>
 
