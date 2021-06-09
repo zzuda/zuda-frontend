@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InnerCard, InnerText } from '../../Card';
+import { InnerCard, InnerText } from '../../Card/Card';
 
 const LogBox = styled.div`
   width: 222px;

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InnerCard, InnerText } from '../../Card';
+import { InnerCard, InnerText } from '../../Card/Card';
 
 const FileBoxContainer = styled.div`
   width: 433px;
   height: 66px;
   background-color: #f6f6f6;
   border-radius: 15px;
-  padding: 2rem;
+  padding: 2rem 1rem 2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +17,7 @@ const FileBoxContainer = styled.div`
   cursor: pointer;
 
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.015);
   }
 `;
 
@@ -35,13 +35,12 @@ const CloseButton = styled.button`
   border-radius: 50%;
   outline: none;
   cursor: pointer;
-  transition: all 0.3s;
   font-size: 16px;
+  font-weight: 600;
+  color: #777777;
 
   &:hover {
     color: rgb(240, 30, 30);
-    font-weight: 600;
-    transform: translateX(-8px);
   }
 `;
 

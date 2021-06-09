@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InnerCard, InnerText } from '../../Card';
-import FDIcon from '../../../../assets/Icons/file_download.png';
-import SendMsgIcon from '../../../../assets/Icons/send_msg.png';
-import CamIcon from '../../../../assets/Icons/cam.png';
+import { InnerCard, InnerText } from '../../Card/Card';
+import MsgTool from '../../../assets/Icons/msg_tool.png';
+import FDIcon from '../../../assets/Icons/file_download.png';
+import CamIcon from '../../../assets/Icons/cam.png';
 
 const IconContainer = styled.div`
   width: 45px;
@@ -56,8 +56,8 @@ const ScreenView = ({ rStart, rEnd, cStart, cEnd }) => {
       </InnerText>
 
       <Container>
+        <Icon img={MsgTool} alt="msgTool"></Icon>
         <Icon img={FDIcon} alt="fileDownload"></Icon>
-        <Icon img={SendMsgIcon} alt="sendMessage"></Icon>
         <Icon img={CamIcon} alt="openCam"></Icon>
       </Container>
     </InnerCard>
