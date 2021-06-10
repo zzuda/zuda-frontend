@@ -11,12 +11,14 @@ import SummaryCard from '../components/Room/SummaryCard';
 import NoticeCard from '../components/Room/NoticeCard';
 import QuitCard from '../components/Room/QuitCard';
 import LogCard from '../components/Room/LogCard';
+import FileShareCard from '../components/Room/FileShareCard';
+import ScreenShareCard from '../components/Room/ScreenShareCard';
 
 const Container = styled.div`
   display: flex;
   position: relative;
-  padding: 3rem;
-  justify-content: space-between;
+  padding: 3rem 10rem 3rem 10rem;
+  justify-content: space-around;
   align-items: center;
 `;
 
@@ -25,7 +27,7 @@ const FlexCol = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 557px;
+  max-width: 557px;
   height: 935px;
 `;
 
@@ -65,6 +67,11 @@ const RoomPage = () => {
         </FlexBox>
       </FlexCol>
       <LogCard />
+
+      <FlexCol>
+        <ScreenShareCard />
+        <FileShareCard />
+      </FlexCol>
     </Container>
   );
 };
