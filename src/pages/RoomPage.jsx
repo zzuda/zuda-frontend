@@ -8,11 +8,21 @@ import {
   useSocketQuit,
   useSocketExecption,
 } from '../hooks/useSocket';
-import { Card } from '../components/Card';
+import SummaryCard from '../components/Room/SummaryCard';
+import NoticeCard from '../components/Room/NoticeCard';
+import QuitCard from '../components/Room/QuitCard';
 
 const GirdContainer = styled.div`
+  position: relative;
+`;
+
+const TempGrid = styled.div`
   display: grid;
-  padding: 2rem;
+  grid-template-columns: 433px 96px;
+  grid-template-rows: repeat(2, minmax(10px, auto));
+  justify-content: stretch;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 0.3rem;
 `;
 
 const RoomPage = () => {
@@ -36,12 +46,12 @@ const RoomPage = () => {
 
   return (
     <GirdContainer>
-      <Card width={200} height={200}>
-        <h3>{id}</h3>
-        <h3>{name}</h3>
-        <div>{roomInfo.roomName}</div>
-      </Card>
-      <RedButton onClick={onClickQuit}>Quit</RedButton>
+      <TempGrid>
+        <SummaryCard name={name} rStart={1} rEnd={2} cStart={1} cEnd={3} />
+
+        <NoticeCard cStart={1} cEnd={2} />
+        <QuitCard cStart={2} cEnd={3} onClick={onClickQuit} />
+      </TempGrid>
     </GirdContainer>
   );
 };
