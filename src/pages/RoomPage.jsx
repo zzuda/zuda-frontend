@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import RedButton from '../atomic/buttons/RedButton';
 import { useInfo } from '../hooks/useInfo';
 import {
   useSocket,
@@ -11,18 +10,29 @@ import {
 import SummaryCard from '../components/Room/SummaryCard';
 import NoticeCard from '../components/Room/NoticeCard';
 import QuitCard from '../components/Room/QuitCard';
+import LogCard from '../components/Room/LogCard';
 
-const GirdContainer = styled.div`
+const Container = styled.div`
+  display: flex;
   position: relative;
+  padding: 3rem;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-const TempGrid = styled.div`
-  display: grid;
-  grid-template-columns: 433px 96px;
-  grid-template-rows: repeat(2, minmax(10px, auto));
-  justify-content: stretch;
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 0.3rem;
+const FlexCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 557px;
+  height: 935px;
+`;
+
+const FlexBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const RoomPage = () => {
@@ -45,14 +55,17 @@ const RoomPage = () => {
   }
 
   return (
-    <GirdContainer>
-      <TempGrid>
-        <SummaryCard name={name} rStart={1} rEnd={2} cStart={1} cEnd={3} />
+    <Container>
+      <FlexCol>
+        <SummaryCard name={name} />
 
-        <NoticeCard cStart={1} cEnd={2} />
-        <QuitCard cStart={2} cEnd={3} onClick={onClickQuit} />
-      </TempGrid>
-    </GirdContainer>
+        <FlexBox>
+          <NoticeCard />
+          <QuitCard onClick={onClickQuit} />
+        </FlexBox>
+      </FlexCol>
+      <LogCard />
+    </Container>
   );
 };
 
