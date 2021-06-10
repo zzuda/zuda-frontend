@@ -20,9 +20,16 @@ const GridBox = styled.div`
   grid-gap: 0.4rem;
 `;
 
-const SummaryCard = ({ name }) => {
+const SummaryCard = ({ name, rStart, rEnd, cStart, cEnd }) => {
   return (
-    <Card w={557} h={770}>
+    <Card
+      w={557}
+      h={770}
+      rStart={rStart}
+      rEnd={rEnd}
+      cStart={cStart}
+      cEnd={cEnd}
+    >
       <Container>
         <SummaryHeader name={name} />
 
