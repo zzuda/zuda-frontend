@@ -14,10 +14,11 @@ const Container = styled.div`
 
 const Title = styled.h3`
   font-family: 'NanumSquare', sans-serif;
+  font-size: 14px;
   color: #323232;
   position: absolute;
   top: 15px;
-  left: 35px;
+  left: 25px;
 `;
 
 const NoticeText = styled.p`
