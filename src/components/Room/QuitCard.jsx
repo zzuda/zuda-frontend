@@ -22,7 +22,7 @@ const Icon = styled.img`
   background-color: #f6f6f6;
 `;
 
-const QuitCard = ({ rStart, rEnd, cStart, cEnd }) => {
+const QuitCard = ({ rStart, rEnd, cStart, cEnd, onClick }) => {
   return (
     <Card
       w={96}
@@ -31,6 +31,7 @@ const QuitCard = ({ rStart, rEnd, cStart, cEnd }) => {
       rEnd={rEnd}
       cStart={cStart}
       cEnd={cEnd}
+      onClick={onClick}
     >
       <Container>
         <Icon src={QuitIcon} alt="Quit" />
