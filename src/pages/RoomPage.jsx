@@ -1,12 +1,41 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import RedButton from '../atomic/buttons/RedButton';
 import { useInfo } from '../hooks/useInfo';
 import {
   useSocket,
   useSocketQuit,
   useSocketExecption,
 } from '../hooks/useSocket';
+import SummaryCard from '../components/Room/SummaryCard';
+import NoticeCard from '../components/Room/NoticeCard';
+import QuitCard from '../components/Room/QuitCard';
+import LogCard from '../components/Room/LogCard';
+import FileShareCard from '../components/Room/FileShareCard';
+import ScreenShareCard from '../components/Room/ScreenShareCard';
+
+const Container = styled.div`
+  display: flex;
+  position: relative;
+  padding: 3rem 10rem 3rem 10rem;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const FlexCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 557px;
+  height: 935px;
+`;
+
+const FlexBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
 
 const RoomPage = () => {
   const { userInfo, roomInfo } = useInfo()[0];
@@ -28,12 +57,22 @@ const RoomPage = () => {
   }
 
   return (
-    <div>
-      <h3>{id}</h3>
-      <h3>{name}</h3>
-      <div>{roomInfo.roomName}</div>
-      <RedButton onClick={onClickQuit}>Quit</RedButton>
-    </div>
+    <Container>
+      <FlexCol>
+        <SummaryCard name={name} />
+
+        <FlexBox>
+          <NoticeCard />
+          <QuitCard onClick={onClickQuit} />
+        </FlexBox>
+      </FlexCol>
+      <LogCard />
+
+      <FlexCol>
+        <ScreenShareCard />
+        <FileShareCard />
+      </FlexCol>
+    </Container>
   );
 };
 
