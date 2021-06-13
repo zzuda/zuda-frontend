@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import UserCountImg from '../../../assets/Admin/UserCount.png';
 
 const Container = styled.div`
     width: 1186px;
@@ -69,6 +70,32 @@ const CreatedDate = styled.span`
     color: #969696;
 `;
 
+const Content = styled.div`
+    width: 315px;
+    height: 290px;
+`;
+
+const PersonCount = styled.div`
+    width: 100%;
+    height: 80px;
+
+    margin-top: 10px;
+
+    border-radius: 25px;
+
+    background-color: #fefefe;
+`;
+
+const UserCount = styled.img`
+    width: 35px;
+    height: 35px;
+
+    margin-top: 20px;
+    margin-left: 20px;
+
+`;
+
+
 const RoomSection = () => {
     return(
         <Container>
@@ -77,7 +104,11 @@ const RoomSection = () => {
                         <RoomName>ROOM NAME1</RoomName>
                         <CreatedDate>2021-08-21 개설됨</CreatedDate>
                     </Title>
-                    
+                    <Content>
+                        <PersonCount>
+                           <UserCount src={UserCountImg}/>
+                        </PersonCount>
+                    </Content>
                 </RoomBlock>
                 
                 <RoomBlock>
