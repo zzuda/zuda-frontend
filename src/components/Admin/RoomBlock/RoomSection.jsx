@@ -106,7 +106,7 @@ const CurrentUserText = styled.span`
 
 const Percentage = styled.div`
     width: 150px;
-    height: 20px;
+    height: 16px;
 
     margin-left: 20px;
     border-radius: 5px;
