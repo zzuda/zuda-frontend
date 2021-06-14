@@ -36,7 +36,6 @@ const RoomBlock = styled.div`
     border-radius: 18px;
     background-color: #ececec;
 
-    /* animation-duration: 0.3s all; */
     transition: 0.3s all;
     &:hover{
         transform: scale(1.03);
@@ -128,6 +127,8 @@ const Percentage = styled.div`
 `;
 
 const Attendance = styled.div`
+    cursor: pointer;
+
     width: 135px;
     height: 200px;
     
