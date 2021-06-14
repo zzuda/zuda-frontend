@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import UserCountImg from '../../../assets/Admin/UserCount.png';
 import AttendanceCheckImg from '../../../assets/Admin/Attendance Check.png';
 import Graph from '../../../assets/Admin/Graph.png';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+const FlexWrap = styled.div`
+    display: flex;
+    flex-direction: ${(props) => (props.direction ? props.direction : "row")};
+    justify-content: space-${(props) => props.mode};
+`;
 
 const Container = styled.div`
     width: 1186px;
@@ -39,9 +47,9 @@ const RoomBlock = styled.div`
     transition: 0.3s all;
     &:hover{
         transform: scale(1.03);
-        box-shadow: 34px 26px 94px -10px #00000030;
-        -webkit-box-shadow: 34px 26px 94px -10px #00000036;
-        -moz-box-shadow: 34px 26px 94px -10px #0000007d;
+        box-shadow: 34px 16px 70px -10px #00000030;
+        -webkit-box-shadow: 34px 26px 70px -10px #00000036;
+        -moz-box-shadow: 34px 26px 70px -10px #0000007d;
 
         background-color: #e9e9e9;
     }
@@ -72,7 +80,7 @@ const CreatedDate = styled.span`
 `;
 
 const Content = styled.div`
-    width: 315px;
+    width: 345px;
     height: 290px;
 `;
 
@@ -176,7 +184,52 @@ const AttendanceGraph = styled.img`
     margin-left: -12px;
 `;
 
+const FileuploadCount = styled.div`
+    cursor: pointer;
+
+    width: 180px;
+    height: 130px;
+
+    margin-top: 17px;
+
+    border-radius: 20px;
+    background-color: #fff;
+`;
+const CircularBarWrap = styled.div`
+    width: 90px;
+
+    padding-top: 25px;
+    padding-left: 10px;
+`;
+const CircularText = styled.span`
+    margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)}px;
+    margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)}px;
+
+    font-size: ${(props) => (props.fSize ? props.fSize : 14)}px;
+    font-weight: ${(props) => (props.fWeight ? props.fWeight : 400)};
+    color: #858585;
+
+    line-height: 20px;
+
+    text-align: center;
+`;
+
+
+const RoomEvent = styled.div`
+    cursor: pointer;
+
+    width: 180px;
+    height: 55px;
+
+    margin-top: 14px;
+
+    border-radius: 15px;
+    background-color: #fff;
+`;
+
 const RoomSection = () => {
+    const percentage = 66;
+
     return(
         <Container>
                 <RoomBlock>
@@ -190,11 +243,30 @@ const RoomSection = () => {
                             <CurrentUserText>23명</CurrentUserText>
                             <PercentageBar><Percentage/></PercentageBar>
                         </PersonCount>
-                        <Attendance>
-                            <AttendanceCheckIcon src={AttendanceCheckImg}/>
-                            <AttendanceText>출석 관리</AttendanceText>
-                            <AttendanceGraph src={Graph}/>
-                        </Attendance>
+                        <FlexWrap mode={"between"}>
+                            <Attendance>
+                                <AttendanceCheckIcon src={AttendanceCheckImg}/>
+                                <AttendanceText>출석 관리</AttendanceText>
+                                <AttendanceGraph src={Graph}/>
+                            </Attendance>
+                            <FlexWrap direction={"column"}>
+                                <FileuploadCount>
+                                    <FlexWrap direction={"row"}>
+                                        <CircularBarWrap>
+                                            <CircularProgressbar value={percentage} text={`${percentage}%`} />
+                                        </CircularBarWrap>
+                                        <FlexWrap direction={"column"}>
+                                            <CircularText fSize={14} marginTop={40} marginLeft={15}>파일제출</CircularText>
+                                            <CircularText fSize={25} fWeight={600} marginLeft={15}>15명</CircularText>
+                                        </FlexWrap>
+                                    </FlexWrap>
+                                </FileuploadCount>
+                                <RoomEvent>
+                                
+                                </RoomEvent>
+                            </FlexWrap>
+                        </FlexWrap>
+                        
                     </Content>
                 </RoomBlock>
                 
