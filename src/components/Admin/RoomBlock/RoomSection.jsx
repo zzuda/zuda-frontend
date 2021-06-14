@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import UserCountImg from '../../../assets/Admin/UserCount.png';
 import AttendanceCheckImg from '../../../assets/Admin/Attendance Check.png';
 import Graph from '../../../assets/Admin/Graph.png';
@@ -85,6 +85,8 @@ const Content = styled.div`
 `;
 
 const PersonCount = styled.div`
+    cursor: pointer;
+    
     width: 350px;
     height: 90px;
 
@@ -95,7 +97,12 @@ const PersonCount = styled.div`
 
     border-radius: 18px;
 
-    background-color: #fefefe;
+    background-color: #fefefe; 
+    transition: 0.3s ease-in-out;
+    &:hover{
+        transform: scale(1.03);
+        animation-duration: 0.3s;
+    }
 `;
 
 const UserCount = styled.img`
@@ -139,8 +146,6 @@ const Attendance = styled.div`
 
     width: 135px;
     height: 200px;
-    
-    transition: 0.3s ease-in-out;
 
     margin-top: 17px;
     margin-left: 5px;
@@ -149,10 +154,16 @@ const Attendance = styled.div`
     background-color: #fefefe;
 
     overflow: hidden;
-
+    transition: 0.3s ease-in-out;
     &:hover{
         transform: scale(1.03);
-        animation-duration: 0.3s;
+        animation-duration: 0.1s;
+    }
+    &:hover .changeColor1{
+        filter: invert(79%) sepia(70%) saturate(3336%) hue-rotate(312deg) brightness(101%) contrast(100%);
+    }
+    &:hover .changeColor2{
+        filter: invert(57%) sepia(57%) saturate(1107%) hue-rotate(316deg) brightness(140%) contrast(97%);
     }
 `;
 
@@ -194,6 +205,12 @@ const FileuploadCount = styled.div`
 
     border-radius: 20px;
     background-color: #fff;
+    
+    transition: 0.3s ease-in-out;
+    &:hover{
+        transform: scale(1.03);
+        animation-duration: 0.3s;
+    }
 `;
 const CircularBarWrap = styled.div`
     width: 90px;
@@ -269,6 +286,7 @@ const DeleteRoom = styled.div`
     }
 `;
 
+
 const RoomSection = () => {
     const percentage = 66;
 
@@ -287,9 +305,9 @@ const RoomSection = () => {
                         </PersonCount>
                         <FlexWrap mode={"between"}>
                             <Attendance>
-                                <AttendanceCheckIcon src={AttendanceCheckImg}/>
+                                <AttendanceCheckIcon className="changeColor1" src={AttendanceCheckImg}/>
                                 <AttendanceText>출석 관리</AttendanceText>
-                                <AttendanceGraph src={Graph}/>
+                                <AttendanceGraph className="changeColor2" src={Graph}/>
                             </Attendance>
                             <FlexWrap direction={"column"}>
                                 <FileuploadCount>
