@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import UserCountImg from '../../../assets/Admin/UserCount.png';
+import AttendanceCheckImg from '../../../assets/Admin/Attendance Check.png';
+import Graph from '../../../assets/Admin/Graph.png';
 
 const Container = styled.div`
     width: 1186px;
@@ -14,7 +16,7 @@ const Container = styled.div`
     flex-wrap: wrap;
 
     overflow-y: scroll;
-    &::-webkit-scrollbar { 
+    &::-webkit-scrollbar {
         display: none;
     }
 `;
@@ -104,7 +106,9 @@ const CurrentUserText = styled.span`
     margin-bottom: 3px;
 `;
 
-const Percentage = styled.div`
+const PercentageBar = styled.div`
+    position: relative;
+    
     width: 150px;
     height: 16px;
 
@@ -113,6 +117,63 @@ const Percentage = styled.div`
     background-color: #ececec;
 `;
 
+const Percentage = styled.div`
+    position: absolute;
+
+    width: 70%;
+    height: 100%;
+
+    background-color: #ff7676;
+    border-radius: 5px;
+`;
+
+const Attendance = styled.div`
+    width: 135px;
+    height: 200px;
+    
+    transition: 0.3s ease-in-out;
+
+    margin-top: 17px;
+    margin-left: 5px;
+
+    border-radius: 20px;
+    background-color: #fefefe;
+
+    overflow: hidden;
+
+    &:hover{
+        transform: scale(1.03);
+        animation-duration: 0.3s;
+    }
+`;
+
+const AttendanceCheckIcon = styled.img`
+    width: 30px;
+    height: 30px;
+    
+    display: block;
+    margin: 0 auto;
+    
+    transform: translateY(115%);
+`;
+
+const AttendanceText = styled.p`
+    color: #858585;
+    text-align: center;
+
+    transform: translateY(150%);
+`;
+
+const AttendanceGraph = styled.img`
+    width: 155px;
+    height: 85px;
+    
+    display: block;
+    margin: 0 auto;
+    
+    margin-top: 70px;
+    margin-left: -12px;
+`;
 
 const RoomSection = () => {
     return(
@@ -126,8 +187,13 @@ const RoomSection = () => {
                         <PersonCount>
                             <UserCount src={UserCountImg}/>
                             <CurrentUserText>23명</CurrentUserText>
-                            <Percentage></Percentage>
+                            <PercentageBar><Percentage/></PercentageBar>
                         </PersonCount>
+                        <Attendance>
+                            <AttendanceCheckIcon src={AttendanceCheckImg}/>
+                            <AttendanceText>출석 관리</AttendanceText>
+                            <AttendanceGraph src={Graph}/>
+                        </Attendance>
                     </Content>
                 </RoomBlock>
                 
