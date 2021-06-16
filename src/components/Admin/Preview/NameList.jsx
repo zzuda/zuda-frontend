@@ -27,9 +27,7 @@ const All = styled.div`
     
 `;
 
-const Room = styled.div`
-    
-`;
+const Room = styled.div``;
 
 
 const NameList = () => {
