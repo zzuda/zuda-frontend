@@ -154,16 +154,16 @@ const Attendance = styled.div`
     background-color: #fefefe;
 
     overflow: hidden;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out all;
+    animation-duration: 0.1s;
     &:hover{
         transform: scale(1.03);
-        animation-duration: 0.1s;
     }
     &:hover .changeColor1{
         filter: invert(79%) sepia(70%) saturate(3336%) hue-rotate(312deg) brightness(101%) contrast(100%);
     }
     &:hover .changeColor2{
-        filter: invert(57%) sepia(57%) saturate(1107%) hue-rotate(316deg) brightness(140%) contrast(97%);
+        transform: scaleX(1.15) translateY(2px);
     }
 `;
 
@@ -175,6 +175,7 @@ const AttendanceCheckIcon = styled.img`
     margin: 0 auto;
     
     transform: translateY(115%);
+    transition: 0.5s ease-in-out all;
 `;
 
 const AttendanceText = styled.p`
@@ -193,6 +194,8 @@ const AttendanceGraph = styled.img`
     
     margin-top: 70px;
     margin-left: -12px;
+
+    transition: 0.3s ease-in-out all;
 `;
 
 const FileuploadCount = styled.div`
