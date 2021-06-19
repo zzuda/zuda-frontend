@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import InputCodeForm from '../Main/InputCodeForm';
 import RedButton from '../../atomic/buttons/RedButton';
-
 import TextLoop from 'react-text-loop';
+import Modal from 'react-modal';
+import toast from 'react-hot-toast';
+import {
+  useSocket,
+  useSocketJoin,
+  useSocketExecption,
+} from '../../hooks/useSocket';
+import { useInfo } from '../../hooks/useInfo';
 
 const Container = styled.div`
   position: absolute;
@@ -44,7 +51,68 @@ const InputDiv = styled.div`
   }
 `;
 
+const InputNameModal = styled(Modal)`
+  position: absolute;
+  padding-left: 4rem;
+  width: 600px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 45px;
+  outline: none;
+`;
+
 const Main = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const socket = useSocket();
+  const setInfo = useInfo()[1];
+
+  const [input, setInput] = useState({
+    inviteCode: '',
+    name: '',
+  });
+
+  const onInputChange = (e, type) => {
+    setInput((prevInput) => ({ ...prevInput, [type]: e.target.value }));
+  };
+
+  const { inviteCode, name } = input;
+
+  useSocketJoin();
+  useSocketExecption();
+
+  const onClickEnter = () => {
+    if (!name) {
+      toast.error('이름을 입력해주세요!', {
+        duration: 1500,
+      });
+      return;
+    }
+    setInfo((prevState) => ({
+      ...prevState,
+      userInfo: { ...prevState.userInfo, name },
+    }));
+    socket.emit('join', { inviteCode, name });
+    setInput('');
+    setIsModalOpen(false);
+  };
+
+  const openModal = () => {
+    if (!inviteCode) {
+      toast.error('입장코드를 입력해주세요!', {
+        duration: 1500,
+      });
+      return;
+    }
+    setIsModalOpen(true);
+  };
+
   return (
     <Container>
       <TextLoop interval={3000}>
@@ -55,11 +123,48 @@ const Main = () => {
       </TextLoop>
       <LoopText2>주다</LoopText2>
       <InputDiv>
-        <InputCodeForm />
-        <RedButton width={126} height={70} radius={50} fSize={40} moveX={-126}>
+        <InputCodeForm
+          onChange={(e) => onInputChange(e, 'inviteCode')}
+          input={inviteCode || ''}
+          placeholder="입장코드를 입력해주세요!"
+        />
+        <RedButton
+          width={126}
+          height={70}
+          radius={50}
+          fSize={40}
+          moveX={-126}
+          onClick={openModal}
+        >
           ➜
         </RedButton>
       </InputDiv>
+      <InputNameModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0,0,0, 0.4)',
+          },
+        }}
+        ariaHideApp={false}
+      >
+        <InputCodeForm
+          onChange={(e) => onInputChange(e, 'name')}
+          input={name || ''}
+          placeholder="방에서 사용할 이름을 입력해주세요!"
+        />
+        <RedButton
+          width={126}
+          height={70}
+          radius={50}
+          fSize={24}
+          moveX={-65}
+          onClick={onClickEnter}
+        >
+          입장!
+        </RedButton>
+      </InputNameModal>
     </Container>
   );
 };

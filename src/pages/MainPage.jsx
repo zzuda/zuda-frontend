@@ -38,10 +38,9 @@ const MainPage = () => {
 
   return (
     <Container>
-      <AdminPage></AdminPage>
-      {/* <Logo src={logo} alt="zuda_logo" />
-      <SwitchingComponent page={page}/>
-      <ParallaxBG /> */}
+      <Logo src={logo} alt="zuda_logo" onClick={() => setPage(page)} />
+      <SwitchingComponent page={page} />
+      <ParallaxBG />
     </Container>
   );
 };
