@@ -38,13 +38,10 @@ const ProfileMenu = () => {
   const [adminData, setAdminData] = useState([]);
   
   useEffect(() => {
-    console.log("Admin get시도");
-
     const GetAdminData = async () =>{
         const res = await Api.get('/auth/me');
         const {name, email} = res.data.data
-        console.log(name, email);
-
+        
         setAdminData((prevAdminData) => ([ 
           ...prevAdminData, {
             "1" : name, 
@@ -52,9 +49,6 @@ const ProfileMenu = () => {
             }
           ])
         );
-
-        console.log(adminData);
-        
     }
     GetAdminData();
 }, []);
