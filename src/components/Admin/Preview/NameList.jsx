@@ -32,14 +32,14 @@ const Room = styled.div``;
 
 const NameList = () => {
 
-    const [UserCount, setUserCount] = useState(129)
+    const [userCount, setUserCount] = useState(129)
 
     return(
         <Container>
             <SmallText>유저 LIST</SmallText>
             <All>
                 <TitleText>전체</TitleText>
-                <CountText>{ UserCount }</CountText>
+                <CountText>{ userCount }</CountText>
             </All>
             <Room>
                 <RoomUserList></RoomUserList>
