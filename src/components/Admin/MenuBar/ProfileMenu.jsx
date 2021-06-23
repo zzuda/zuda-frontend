@@ -34,7 +34,6 @@ const MyEmail = styled.div`
 
 
 const ProfileMenu = () => {
-  // console.log(adminName);
   const [adminData, setAdminData] = useState([]);
   
   useEffect(() => {
