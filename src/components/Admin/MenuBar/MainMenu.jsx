@@ -52,10 +52,15 @@ const MenuText = styled.li`
     font-weight: 600;
     color: #555;
 
+    cursor: pointer;
+    user-select: none;
+
+    transition: 0.3s;
     &:hover{
         color: #ff4141;
-
         border-right: 3px solid #ff4141;
+
+        transform: translate(4px);
     }
 `;
 
