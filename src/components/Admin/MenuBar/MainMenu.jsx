@@ -46,7 +46,6 @@ const MenuFrame = styled.ul`
 `;
 
 const MenuText = styled.li`
-    /* text-align: center; */
     list-style: none;
     
     font-size: 26px;
