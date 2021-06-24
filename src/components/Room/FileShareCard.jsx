@@ -24,9 +24,9 @@ const Icon = styled.img`
   margin-bottom: 1rem;
 `;
 
-const FileShareCard = () => {
+const FileShareCard = ({ onClick }) => {
   return (
-    <Card w={550} h={450}>
+    <Card w={550} h={450} onClick={onClick}>
       <Container>
         <Icon src={FileShareIcon} alt="fileShare" />
 

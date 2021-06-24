@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 import { useInfo } from '../hooks/useInfo';
@@ -7,6 +7,7 @@ import {
   useSocketQuit,
   useSocketExecption,
 } from '../hooks/useSocket';
+import Modal from 'react-modal';
 import SummaryCard from '../components/Room/SummaryCard';
 import NoticeCard from '../components/Room/NoticeCard';
 import QuitCard from '../components/Room/QuitCard';
@@ -37,10 +38,23 @@ const FlexBox = styled.div`
   justify-content: space-between;
 `;
 
+const FileShareModal = styled(Modal)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1280px;
+  height: 720px;
+  background-color: #f6f6f6;
+  border-radius: 15px;
+  outline: none;
+`;
+
 const RoomPage = () => {
   const { userInfo, roomInfo } = useInfo()[0];
   const { id, name } = userInfo;
   const socket = useSocket();
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const onClickQuit = () => {
     if (!roomInfo.roomId) {
@@ -70,8 +84,19 @@ const RoomPage = () => {
 
       <FlexCol>
         <ScreenShareCard />
-        <FileShareCard />
+        <FileShareCard onClick={() => setIsOpenModal(true)} />
       </FlexCol>
+
+      <FileShareModal
+        isOpen={isOpenModal}
+        onRequestClose={() => setIsOpenModal(false)}
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0,0,0, 0.6)',
+          },
+        }}
+        ariaHideApp={false}
+      />
     </Container>
   );
 };
