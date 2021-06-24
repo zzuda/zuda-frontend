@@ -63,22 +63,22 @@ const Content = styled.div`
 const RoomSection = () => {
     return(
         <Container>
-                <RoomBlock>
-                    <Title />
-                    <Content>
+            <RoomBlock>
+                <Title />
+                <Content>
+                    
+                    <PersonCount />
+                    <FlexWrap mode={"between"}>
+                    <Attendace />
                         
-                        <PersonCount />
-                        <FlexWrap mode={"between"}>
-                           <Attendace />
-                            
-                            <FlexWrap direction={"column"}>
-                                <FileuploadCount />
-                                <RoomEvent />
-                            </FlexWrap>
+                        <FlexWrap direction={"column"}>
+                            <FileuploadCount />
+                            <RoomEvent />
+                        </FlexWrap>
 
-                        </FlexWrap> 
-                    </Content>
-                </RoomBlock>
+                    </FlexWrap> 
+                </Content>
+            </RoomBlock>
         </Container>
     )
 }
