@@ -14,6 +14,7 @@ import QuitCard from '../components/Room/QuitCard';
 import LogCard from '../components/Room/LogCard';
 import FileShareCard from '../components/Room/FileShareCard';
 import ScreenShareCard from '../components/Room/ScreenShareCard';
+import FileShare from '../components/Room/FileShare';
 
 const Container = styled.div`
   display: flex;
@@ -96,7 +97,9 @@ const RoomPage = () => {
           },
         }}
         ariaHideApp={false}
-      />
+      >
+        <FileShare />
+      </FileShareModal>
     </Container>
   );
 };
