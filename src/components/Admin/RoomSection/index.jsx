@@ -66,7 +66,7 @@ const RoomSection = () => {
             <RoomBlock>
                 <Title />
                 <Content>
-                    
+                        
                     <PersonCount />
                     <FlexWrap mode={"between"}>
                     <Attendace />
