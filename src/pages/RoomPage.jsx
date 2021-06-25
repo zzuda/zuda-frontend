@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Redirect } from 'react-router-dom';
 import { useInfo } from '../hooks/useInfo';
 import {
@@ -39,6 +39,33 @@ const FlexBox = styled.div`
   justify-content: space-between;
 `;
 
+const OpenModalAnimate = keyframes`
+  0% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  10% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  20% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+`;
+
 const FileShareModal = styled(Modal)`
   position: absolute;
   top: 50%;
@@ -49,6 +76,7 @@ const FileShareModal = styled(Modal)`
   background-color: #f6f6f6;
   border-radius: 15px;
   outline: none;
+  animation: ${OpenModalAnimate} 2s ease-out;
 `;
 
 const RoomPage = () => {
