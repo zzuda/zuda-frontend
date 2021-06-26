@@ -21,9 +21,9 @@ const All = styled.div`
     width: 280px;
 
     padding-right: 30px;
-    line-height: 50%;
+    align-items: center;
 
-    margin: 4em 0 3em 2em;
+    margin: 2em 0 1.1em 1.2em;
     
 `;
 
