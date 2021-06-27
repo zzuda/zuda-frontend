@@ -6,6 +6,7 @@ import { Google, FaceBook, Kakao, Naver } from '../Socials';
 import LoginForm from './LoginForm';
 import Api from '../../Api';
 import { setToken } from '../../Api/tokenManage';
+import toast from 'react-hot-toast';
 
 const Container = styled.div`
   width: 600px;
@@ -58,7 +59,9 @@ const Login = () => {
     const { email, password } = input;
 
     if ((email.trim() === '') | (password.trim() === '')) {
-      alert('공백이 있어요!');
+      toast.error('공백이 있어요!', {
+        duration: 1500,
+      });
       return;
     }
 
@@ -78,7 +81,9 @@ const Login = () => {
 
       if (err.response.data.code === 'auth-404') {
         const { message } = err.response.data;
-        alert(message);
+        toast.error(message , {
+          duration: 1500,
+        });
         setInput((prevState) => ({ ...prevState, password: '' }));
       }
     }
