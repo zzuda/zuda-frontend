@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import ProfileMenu from '../../components/Admin/MenuBar/ProfileMenu';
 import MainMenu from '../../components/Admin/MenuBar/MainMenu';
 import NameList from '../../components/Admin/Preview/NameList';
-import RoomBlock from '../../components/Admin/RoomBlock/RoomSection';
+import RoomBlock from '../../components/Admin/RoomSection';
 import UserManagement from '../../components/Admin/UserManagement/UserManagement';
+
 
 const Container = styled.div`
   display: flex;

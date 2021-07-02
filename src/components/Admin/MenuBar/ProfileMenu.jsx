@@ -18,13 +18,13 @@ const MyName = styled.div`
   font-size: 37px;
   font-weight: 700;
   
-  text-align: center;
+  transform: translateX(27%);
 
   color: #585858;
 `;
 
 const MyEmail = styled.div`
-  text-align: center;
+  transform: translateX(25%);
 
   line-height: 5px;
   font-size: 16px;
@@ -34,27 +34,15 @@ const MyEmail = styled.div`
 
 
 const ProfileMenu = () => {
-  // console.log(adminName);
   const [adminData, setAdminData] = useState([]);
   
   useEffect(() => {
-    console.log("Admin get시도");
-
     const GetAdminData = async () =>{
         const res = await Api.get('/auth/me');
         const {name, email} = res.data.data
-        console.log(name, email);
-
-        setAdminData((prevAdminData) => ([ 
-          ...prevAdminData, {
-            "1" : name, 
-            "2" : email
-            }
-          ])
-        );
-
-        console.log(adminData);
         
+        setAdminData([name, email]);
+        console.log("로롤로"+adminData+"라랄라");
     }
     GetAdminData();
 }, []);
@@ -63,8 +51,8 @@ const ProfileMenu = () => {
     <Container>
       <SmallText>MENU</SmallText>
       <ProfileBox>
-        <MyName>MY NAME</MyName>
-        <MyEmail>example@zuda.com</MyEmail>
+        <MyName>{adminData[0]}</MyName>
+        <MyEmail>{adminData[1]}</MyEmail>
       </ProfileBox>
     </Container>
   );
