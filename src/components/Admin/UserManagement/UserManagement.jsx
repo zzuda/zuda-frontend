@@ -100,7 +100,7 @@ const UserName = styled.div`
 const UserManagement = () => {
     return (
         <Container>
-            <Room>
+            <Room>  
                 <TitleSection>
                     <RoomName>ROOMNAME!</RoomName>
                     <TitleLine />
