@@ -12,4 +12,13 @@ const Api = axios.create({
   },
 });
 
+export const FileApi = axios.create({
+  baseURL: URL,
+  withCredentials: false,
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: `Bearer ${getToken() || ''}`,
+  },
+});
+
 export default Api;
