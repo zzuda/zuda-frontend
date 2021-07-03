@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import FileShareHeader from './FileShareHeader';
 import FileList from './FileList';
@@ -19,11 +19,13 @@ const Content = styled.div`
 `;
 
 const FileShare = () => {
+  const fileState = useState([{ id: 0, data: { name: 'test.test' } }, { id: 1, data: { name: 'test2.test' } }]);
+
   return (
     <Container>
       <FileShareHeader />
       <Content>
-        <FileList />
+        <FileList fileState={fileState} />
         <UploadFile />
       </Content>
     </Container>
