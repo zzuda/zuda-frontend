@@ -42,7 +42,7 @@ const ProfileMenu = () => {
         const {name, email} = res.data.data
         
         setAdminData([name, email]);
-        console.log("로롤로"+adminData+"라랄라");
+        console.log(adminData);
     }
     GetAdminData();
 }, []);
