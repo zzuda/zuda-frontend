@@ -165,7 +165,7 @@ const UserManagement = () => {
         <UserSection>
           <UserBox>
             <Icon>22</Icon>
-            <UserName>하대겸</UserName>
+            <UserName>홍길동</UserName>
             <UserMsg>메세지 : 파일 제출하였습니다!</UserMsg>
             <MenuIconBox>
               <MenuIcons src={SendMsgImg} />
