@@ -23,15 +23,12 @@ const Preview = styled.div`
   width: 385px;
   height: 100%;
   
-  /* padding: 2rem; */
-
   background-color: #fdfdfd;
   border-right: 3px solid #ececec;
 `;
 
 const SearchBar = styled.input`
   border: none;
-  
   margin: 0 auto;
 `;
 
@@ -45,7 +42,6 @@ const AdminPage = () => {
       <Preview>
         <NameList></NameList>
       </Preview>
-      {/* <RoomBlock/> */}
       <UserManagement></UserManagement>
     </Container>
   );
