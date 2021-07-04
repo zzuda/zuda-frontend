@@ -20,8 +20,8 @@ const UploadFile = () => {
   const fileDom = useRef(null);
 
   const onClickSubmit = async () => {
-    const file = fileDom.current.files;
-    if (file.length <= 0) {
+    const file = fileDom.current.files[0];
+    if (!file) {
       alert('not file!');
       return;
     }
