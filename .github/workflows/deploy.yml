@@ -1,35 +1,33 @@
 name: zuda-frontend-deploy
 on:
   workflow_dispatch:
-  release:
-    types:
-      - created
+  schedule:
+    - cron: '0 22 * * 1'
 
 jobs:
-# Enable this when lint step is required
-#   lint:
-#     runs-on: ubuntu-18.04
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
+  lint:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-#       - name: Cache node modules
-#         uses: actions/cache@v2
-#         with:
-#           path: node_modules
-#           key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
-#           restore-keys: |
-#             ${{ runner.OS }}-build-
-#             ${{ runner.OS }}-
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
 
-#       - name: Install Dependencies
-#         run: yarn
+      - name: Install Dependencies
+        run: yarn
 
-#       - name: Run ESLint
-#         run: yarn lint
+      - name: Run ESLint
+        run: yarn lint
 
   deploy:
-#     needs: lint
+    needs: lint
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
@@ -52,3 +50,19 @@ jobs:
           ftp-password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
           git-ftp-args: --insecure
+
+      - name: Discord Alert Success
+        uses: sarisia/actions-status-discord@v1
+        if: success()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "배포 성공!"
+          description: "🚀 `zuda-frontend` 배포를 성공하였습니다."
+
+      - name: Discord Alert Failure
+        uses: sarisia/actions-status-discord@v1
+        if: failure()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "배포 실패!"
+          description: "💥 `zuda-frontend` 배포를 실패하였습니다."
