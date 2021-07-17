@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Api from '../../../Api';
+import toast from 'react-hot-toast';
 
 const Container = styled.div`
   width: 600px;
@@ -26,36 +27,40 @@ const ItemContainer = styled.div`
 `;
 
 const FileList = ({ fileState }) => {
-  const [files, setFiles] = fileState;
+  const [fileList, setFileList] = fileState;
 
   const FileItem = ({ data }) => {
-    const { name } = data.data;
+    const { name } = data;
 
     const onClickDel = async () => {
       try {
         await Api.post('/file/delete', {
-          roomId: 5,
-          fileName: data.data.name,
+          roomId: '5',
+          fileName: name,
         });
       } catch (error) {
-        console.error(error);
+        toast.error(error, {
+          duration: 1500,
+        });
       }
 
-      setFiles((prevFiles) => prevFiles.filter((file) => file.id !== data.id));
+      setFileList((prevFiles) =>
+        prevFiles.filter((file) => file.id !== data.id),
+      );
     };
 
     return (
-      <ItemContainer onClick={onClickDel} key={data.id}>
+      <ItemContainer>
         {name}
-        <button>X</button>
+        <button onClick={onClickDel}>X</button>
       </ItemContainer>
     );
   };
 
   return (
     <Container>
-      {files.map((file) => (
-        <FileItem data={file} />
+      {fileList.map((file) => (
+        <FileItem data={file} key={file.id} />
       ))}
     </Container>
   );
