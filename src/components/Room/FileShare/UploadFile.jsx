@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { FileApi } from '../../../Api';
+import toast from 'react-hot-toast';
 
 const Container = styled.div`
   width: 600px;
@@ -22,7 +23,9 @@ const UploadFile = () => {
   const onClickSubmit = async () => {
     const file = fileDom.current.files[0];
     if (!file) {
-      alert('not file!');
+      toast.error('파일을 선택해주세요!', {
+        duration: 1500,
+      });
       return;
     }
 
@@ -32,8 +35,15 @@ const UploadFile = () => {
 
     try {
       await FileApi.post('/file/upload', frm);
-    } catch (err) {
-      console.error(err);
+      toast.success('파일이 업로드되었습니다!', {
+        duration: 1500,
+      });
+
+      fileDom.current.value = '';
+    } catch (error) {
+      toast.error(error, {
+        duration: 1500,
+      });
       return;
     }
   };
