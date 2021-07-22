@@ -14,17 +14,17 @@ const Container = styled.div`
 
 const Content = styled.div`
   width: 100%;
-  height: 100%;
+  height: 600px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1rem;
 `;
 
-const FileShare = () => {
+const FileShare = ({ roomInfo }) => {
   const id = useRef(0);
-
+  const { roomId } = roomInfo;
   const fileState = useState([]);
-
   const setFileList = fileState[1];
 
   const remakeFile = (file) => {
@@ -40,27 +40,27 @@ const FileShare = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await Api.post('/file/list', { roomId: '5' });
+        const data = await Api.post('/file/list', { roomId: `${roomId}` });
 
         const { files } = data.data.data;
 
         setFileList((prevFile) => files.map((file) => remakeFile(file)));
       } catch (error) {
-        toast.error(error, {
+        toast.error('오류! (정상적인 파일갱신이 불가능합니다!)', {
           duration: 1500,
         });
       }
     };
 
     fetchData();
-  }, [setFileList]);
+  }, [setFileList, roomId]);
 
   return (
     <Container>
       <FileShareHeader />
       <Content>
-        <FileList fileState={fileState} />
-        <UploadFile />
+        <FileList fileState={fileState} roomId={roomId} />
+        <UploadFile roomId={roomId} />
       </Content>
     </Container>
   );

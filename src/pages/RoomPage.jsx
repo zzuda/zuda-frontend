@@ -109,6 +109,7 @@ const RoomPage = () => {
           <QuitCard onClick={onClickQuit} />
         </FlexBox>
       </FlexCol>
+
       <LogCard />
 
       <FlexCol>
@@ -126,7 +127,7 @@ const RoomPage = () => {
         }}
         ariaHideApp={false}
       >
-        <FileShare />
+        <FileShare roomInfo={roomInfo} />
       </FileShareModal>
     </Container>
   );
