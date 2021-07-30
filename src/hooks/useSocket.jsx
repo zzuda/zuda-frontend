@@ -10,7 +10,7 @@ import { initialRoom, useInfo } from './useInfo';
 import toast from 'react-hot-toast';
 
 const SocketContext = createContext(null);
-const socket = io.connect('http://localhost:8080/room');
+const socket = io.connect('http://localhost:8080/');
 
 export const SocketProvider = ({ children }) => {
   return (
